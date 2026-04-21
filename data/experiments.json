@@ -3,7 +3,7 @@
     "id": 52,
     "test_id": "TEST-052",
     "title": "the front-list Featured Categories only has book c...",
-    "status": "Idea",
+    "status": "SQA",
     "platform": [
       "Web-Mobile",
       "Web-Desk"
@@ -37,7 +37,7 @@
     "id": 53,
     "test_id": "TEST-053",
     "title": "on add_to_cart button click, change to primary and...",
-    "status": "Idea",
+    "status": "Live",
     "platform": [
       "Web-Mobile"
     ],
@@ -70,7 +70,7 @@
     "id": 54,
     "test_id": "TEST-054",
     "title": "If we increase the font size and potentially the w...",
-    "status": "Idea",
+    "status": "Amaly Task",
     "platform": [
       "Web-Mobile"
     ],
@@ -103,7 +103,7 @@
     "id": 55,
     "test_id": "TEST-055",
     "title": "If we increase the font size of the percentage dis...",
-    "status": "Idea",
+    "status": "Amaly Task",
     "platform": [
       "Web-Desk"
     ],
@@ -136,7 +136,7 @@
     "id": 56,
     "test_id": "TEST-056",
     "title": "If we change the text to shorter, action-oriented ...",
-    "status": "Idea",
+    "status": "Amaly Task",
     "platform": [
       "Web-Desk"
     ],
@@ -169,7 +169,7 @@
     "id": 57,
     "test_id": "TEST-057",
     "title": "If we display the exact numerical rating (e.g., 4....",
-    "status": "Idea",
+    "status": "Amaly Task",
     "platform": [
       "Web-Mobile"
     ],
@@ -202,7 +202,7 @@
     "id": 58,
     "test_id": "TEST-058",
     "title": "If we increase the font size of the payable price ...",
-    "status": "Idea",
+    "status": "Amaly Task",
     "platform": [
       "Web-Desk"
     ],
@@ -235,7 +235,7 @@
     "id": 59,
     "test_id": "TEST-059",
     "title": "If we remove the crossed-out original price and on...",
-    "status": "Idea",
+    "status": "Implementation",
     "platform": [
       "Web-Mobile"
     ],
@@ -268,7 +268,7 @@
     "id": 60,
     "test_id": "TEST-060",
     "title": "If we move the paying price to the left and the cr...",
-    "status": "Idea",
+    "status": "Amaly Task",
     "platform": [
       "Web-Desk"
     ],
@@ -299,7 +299,7 @@
     "id": 61,
     "test_id": "TEST-061",
     "title": "If we display the Quick Deal badge (and potentiall...",
-    "status": "Idea",
+    "status": "Implementation",
     "platform": [
       "Web-Desk"
     ],
@@ -332,7 +332,7 @@
     "id": 62,
     "test_id": "TEST-062",
     "title": "showing stock aount left in pdp as well, will cont...",
-    "status": "Idea",
+    "status": "Analysis",
     "platform": [
       "Web-Mobile"
     ],
@@ -365,7 +365,7 @@
     "id": 63,
     "test_id": "TEST-063",
     "title": "shoing limited stock, or stock running our, badges...",
-    "status": "Idea",
+    "status": "Analysis",
     "platform": [
       "Web-Mobile"
     ],
