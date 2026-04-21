@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Disable strict mode to avoid double-fetching in dev
 };
 
 export default nextConfig;
