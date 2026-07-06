@@ -1,15 +1,17 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { FlaskConical, ListTodo, Inbox, RefreshCw, Plus } from 'lucide-react';
-import type { Experiment, Task, Idea } from '@/lib/types';
+import { useState, useEffect } from 'react';
+import { FlaskConical, ListTodo, Inbox, RefreshCw, Plus, Columns3, BarChart3 } from 'lucide-react';
+import type { Experiment, Task, Idea, ExperimentStatus } from '@/lib/types';
 import { ExperimentTable } from '@/components/ExperimentTable';
 import { ExperimentModal } from '@/components/ExperimentModal';
+import { KanbanBoard } from '@/components/KanbanBoard';
+import { ReportsTab } from '@/components/ReportsTab';
 import { TaskList } from '@/components/TaskList';
 import { InboxTab } from '@/components/InboxTab';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
-type Tab = 'tasks' | 'experiments' | 'inbox';
+type Tab = 'tasks' | 'experiments' | 'board' | 'inbox' | 'reports';
 
 export default function Dashboard() {
   const [tab, setTab] = useState<Tab>('experiments');
@@ -22,7 +24,6 @@ export default function Dashboard() {
   const [editingExp, setEditingExp] = useState<Experiment | null>(null);
 
   async function fetchAll() {
-    setLoading(true);
     const [exps, tsks, idls, pgs] = await Promise.all([
       fetch('/api/experiments').then((r) => r.json()),
       fetch('/api/tasks').then((r) => r.json()),
@@ -33,10 +34,18 @@ export default function Dashboard() {
     setTasks(tsks);
     setIdeas(idls);
     setPages(pgs);
-    setLoading(false);
   }
 
-  useEffect(() => { fetchAll(); }, []);
+  // Full-screen loader only on first load; later fetchAll() calls refresh in place.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- all setState happens after await, not synchronously
+    fetchAll().finally(() => setLoading(false));
+  }, []);
+
+  function refresh() {
+    setLoading(true);
+    fetchAll().finally(() => setLoading(false));
+  }
 
   // --- Experiments ---
   async function saveExperiment(data: Partial<Experiment>) {
@@ -52,6 +61,13 @@ export default function Dashboard() {
 
   async function deleteExperiment(id: number) {
     await fetch('/api/experiments', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
+    fetchAll();
+  }
+
+  async function changeStage(exp: Experiment, status: ExperimentStatus) {
+    // Optimistic update so board moves instantly; server appends stage_history.
+    setExperiments((prev) => prev.map((e) => (e.id === exp.id ? { ...e, status } : e)));
+    await fetch('/api/experiments', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...exp, status }) });
     fetchAll();
   }
 
@@ -102,7 +118,9 @@ export default function Dashboard() {
   const tabs: { id: Tab; label: string; icon: React.ReactNode; count?: number }[] = [
     { id: 'tasks', label: 'My Tasks', icon: <ListTodo size={16} />, count: tasks.filter((t) => t.status !== 'Completed').length },
     { id: 'experiments', label: 'A/B Tests', icon: <FlaskConical size={16} />, count: experiments.length },
+    { id: 'board', label: 'Board', icon: <Columns3 size={16} /> },
     { id: 'inbox', label: 'Inbox', icon: <Inbox size={16} />, count: pendingIdeas || undefined },
+    { id: 'reports', label: 'Reports', icon: <BarChart3 size={16} /> },
   ];
 
   return (
@@ -149,14 +167,14 @@ export default function Dashboard() {
             </div>
             <ThemeToggle />
             <button
-              onClick={fetchAll}
+              onClick={refresh}
               className="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors"
               title="Refresh"
             >
               <RefreshCw size={15} className={loading ? 'animate-spin' : ''} />
             </button>
 
-            {tab === 'experiments' && (
+            {(tab === 'experiments' || tab === 'board') && (
               <button
                 onClick={() => { setEditingExp(null); setShowExpModal(true); }}
                 className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-colors shadow-lg shadow-violet-500/20"
@@ -171,7 +189,7 @@ export default function Dashboard() {
       {/* Stats bar */}
       <div className="border-b border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-8">
-          {tab === 'experiments' && (
+          {(tab === 'experiments' || tab === 'board' || tab === 'reports') && (
             <>
               <Stat label="Total Experiments" value={experiments.length} />
               <Stat label="Live" value={experiments.filter((e) => e.status === 'Live').length} accent />
@@ -221,6 +239,30 @@ export default function Dashboard() {
                   onEdit={(exp) => { setEditingExp(exp); setShowExpModal(true); }}
                   onDelete={deleteExperiment}
                 />
+              </div>
+            )}
+
+            {tab === 'board' && (
+              <div className="space-y-4">
+                <div>
+                  <h1 className="text-xl font-semibold text-slate-900 dark:text-white">Pipeline Board</h1>
+                  <p className="text-sm text-slate-500 dark:text-white/40 mt-0.5">Move tests through the pipeline — every stage change is timestamped</p>
+                </div>
+                <KanbanBoard
+                  experiments={experiments}
+                  onOpen={(exp) => { setEditingExp(exp); setShowExpModal(true); }}
+                  onStageChange={changeStage}
+                />
+              </div>
+            )}
+
+            {tab === 'reports' && (
+              <div className="space-y-4">
+                <div>
+                  <h1 className="text-xl font-semibold text-slate-900 dark:text-white">Reports</h1>
+                  <p className="text-sm text-slate-500 dark:text-white/40 mt-0.5">Program health across your A/B testing pipeline</p>
+                </div>
+                <ReportsTab experiments={experiments} />
               </div>
             )}
 

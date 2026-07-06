@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, ChevronRight, Pencil, Trash2, ExternalLink } from 'lucide-react';
-import type { Experiment } from '@/lib/types';
+import { ChevronDown, ChevronRight, Pencil, Trash2 } from 'lucide-react';
+import type { Experiment, MetricRow } from '@/lib/types';
 import { PipelineBar } from './PipelineBar';
+import { rate, lift, twoProportionZTest, significanceLabel, formatPct, formatLift } from '@/lib/stats';
 
 interface Props {
   experiments: Experiment[];
@@ -20,6 +21,8 @@ const resultColors: Record<string, string> = {
 };
 
 function ExpandedRow({ exp }: { exp: Experiment }) {
+  // Snapshot once per mount — Date.now() during render trips the compiler's purity rule.
+  const [now] = useState(() => Date.now());
   return (
     <div className="px-6 py-5 bg-white/[0.02] border-t border-white/5 space-y-4">
       <PipelineBar status={exp.status} />
@@ -61,16 +64,52 @@ function ExpandedRow({ exp }: { exp: Experiment }) {
         </div>
       </div>
 
-      {(exp.baseline_data || exp.current_data) && (
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Baseline Data</p>
-            <p className="text-sm text-slate-900 dark:text-white/80 whitespace-pre-wrap">{exp.baseline_data || '—'}</p>
+      {/* Stage timeline mini-view */}
+      {(exp.stage_history?.length ?? 0) > 0 && (
+        <div>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-2">Stage History</p>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {exp.stage_history.map((h, i) => {
+              const isLast = i === exp.stage_history.length - 1;
+              const leftAt = isLast ? now : new Date(exp.stage_history[i + 1].entered_at).getTime();
+              const days = Math.floor((leftAt - new Date(h.entered_at).getTime()) / 86_400_000);
+              return (
+                <span key={i} className="flex items-center gap-1.5">
+                  <span
+                    className={`px-2 py-0.5 rounded-md text-[10px] font-semibold ${
+                      isLast
+                        ? 'bg-violet-500/15 text-violet-600 dark:text-violet-400'
+                        : 'bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-white/45'
+                    }`}
+                    title={`${new Date(h.entered_at).toLocaleDateString()}${h.note ? ` — ${h.note}` : ''}`}
+                  >
+                    {h.stage} <span className="opacity-60 tabular-nums">{days}d</span>
+                  </span>
+                  {!isLast && <span className="text-slate-300 dark:text-white/20 text-[10px]">→</span>}
+                </span>
+              );
+            })}
           </div>
-          <div>
-            <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Current Data</p>
-            <p className="text-sm text-slate-900 dark:text-white/80 whitespace-pre-wrap">{exp.current_data || '—'}</p>
+        </div>
+      )}
+
+      {/* Results summary */}
+      {exp.results && exp.results.metrics.length > 0 && (
+        <div>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-2">
+            Results{exp.results.exposure_event && <> · exposure: <span className="font-mono">{exp.results.exposure_event}</span></>}
+          </p>
+          <div className="space-y-1">
+            {exp.results.metrics.map((m, i) => (
+              <MetricSummary key={i} metric={m} results={exp.results} />
+            ))}
           </div>
+        </div>
+      )}
+      {exp.results?.notes && (
+        <div>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Result Notes</p>
+          <p className="text-sm text-slate-700 dark:text-white/80 whitespace-pre-wrap">{exp.results.notes}</p>
         </div>
       )}
 
@@ -80,6 +119,45 @@ function ExpandedRow({ exp }: { exp: Experiment }) {
           <p className="text-sm text-slate-900 dark:text-white/80">{exp.remarks}</p>
         </div>
       )}
+    </div>
+  );
+}
+
+function MetricSummary({ metric, results }: { metric: MetricRow; results: NonNullable<Experiment['results']> }) {
+  const { exposures } = results;
+  return (
+    <div className="flex flex-wrap items-center gap-3 text-xs">
+      <span className="font-mono font-semibold text-slate-700 dark:text-white/70 w-28 truncate" title={metric.name}>{metric.name || '(unnamed)'}</span>
+      {results.variants.map((v, i) => {
+        const val = metric.values[i];
+        const r = metric.kind === 'count' ? rate(val, exposures[i]) : null;
+        const l = i > 0
+          ? (metric.kind === 'count'
+              ? lift(rate(metric.values[0], exposures[0]), r)
+              : lift(metric.values[0], val))
+          : null;
+        const z = i > 0 && metric.kind === 'count'
+          ? twoProportionZTest(metric.values[0], exposures[0], val, exposures[i])
+          : null;
+        return (
+          <span key={i} className="flex items-center gap-1 text-slate-500 dark:text-white/45">
+            <span className="text-slate-400 dark:text-white/30">{v}:</span>
+            <span className="tabular-nums text-slate-700 dark:text-white/70">
+              {metric.kind === 'count' ? (r != null ? formatPct(r) : val ?? '—') : val ?? '—'}
+            </span>
+            {l != null && (
+              <span className={`font-semibold tabular-nums ${l >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                {formatLift(l)}
+              </span>
+            )}
+            {z != null && (
+              <span className={`tabular-nums ${significanceLabel(z.pValue) === 'significant' ? 'text-green-600 dark:text-green-400 font-semibold' : significanceLabel(z.pValue) === 'trending' ? 'text-amber-500' : 'text-slate-400 dark:text-white/30'}`}>
+                p={z.pValue < 0.001 ? '<.001' : z.pValue.toFixed(3)}
+              </span>
+            )}
+          </span>
+        );
+      })}
     </div>
   );
 }
@@ -99,7 +177,7 @@ export function ExperimentTable({ experiments, onEdit, onDelete }: Props) {
   function toggleRow(id: number) {
     setExpanded((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id); else next.add(id);
       return next;
     });
   }

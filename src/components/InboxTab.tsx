@@ -35,7 +35,7 @@ const defaultForm: SubmitForm = {
   type: 'experiment',
 };
 
-export function InboxTab({ ideas, onApprove, onReject, onSubmit, onDelete, allPages, onNewPage }: Props) {
+export function InboxTab({ ideas, onApprove, onReject, onSubmit, allPages, onNewPage }: Props) {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState<SubmitForm>(defaultForm);
   const [filter, setFilter] = useState<'Pending' | 'Approved' | 'Rejected' | 'All'>('Pending');

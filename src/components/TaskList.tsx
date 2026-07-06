@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plus, CheckCircle2, Circle, Pencil, Trash2, Calendar, Link, ChevronDown, ChevronRight } from 'lucide-react';
-import type { Task, TaskStatus, TaskType } from '@/lib/types';
+import type { Task, TaskStatus } from '@/lib/types';
 import { TaskModal } from './TaskModal';
 
 const STATUSES: TaskStatus[] = ['Active', 'In Progress', 'Completed'];
@@ -38,7 +38,7 @@ export function TaskList({ tasks, onAdd, onUpdate, onDelete }: Props) {
   function toggleExpand(id: number) {
     setExpandedIds((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id); else next.add(id);
       return next;
     });
   }

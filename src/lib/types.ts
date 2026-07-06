@@ -23,6 +23,52 @@ export const PIPELINE_STAGES: ExperimentStatus[] = [
   'Staging (Club)', 'Live', 'Results Setup', 'Monitoring', 'Completed',
 ];
 
+export const PHASES: { name: string; stages: ExperimentStatus[] }[] = [
+  { name: 'Planning', stages: ['Idea', 'Analysis', 'PRD'] },
+  { name: 'Setup', stages: ['Growthbook Setup', 'Amaly Task'] },
+  { name: 'Build', stages: ['Implementation', 'Deploy Local'] },
+  { name: 'QA', stages: ['SQA'] },
+  { name: 'Code Review', stages: ['Code Review', 'Merge', 'Staging (Club)'] },
+  { name: 'Live', stages: ['Live', 'Results Setup', 'Monitoring'] },
+  { name: 'Done', stages: ['Completed'] },
+];
+
+export interface StageEntry {
+  stage: ExperimentStatus;
+  entered_at: string; // ISO timestamp when the experiment entered this stage
+  note: string; // per-stage note, editable after the fact
+}
+
+/**
+ * Results matrix: variant columns × metric rows, anchored on an exposure event.
+ * `kind: 'count'` metrics are event counts — rendered as rate vs exposures with
+ * a two-proportion z-test vs control. `kind: 'value'` metrics are raw numbers
+ * (e.g. AOV) — lift vs control only.
+ */
+export interface MetricRow {
+  name: string; // e.g. 'add_to_cart', 'checkout', 'aov'
+  kind: 'count' | 'value';
+  values: (number | null)[]; // per variant, aligned with ExperimentResults.variants
+}
+
+export interface ExperimentResults {
+  exposure_event: string; // participant definition, e.g. 'pdp_view'
+  variants: string[]; // ['Control', 'Variant B', ...] — index 0 = control
+  exposures: (number | null)[]; // participants per variant
+  metrics: MetricRow[];
+  notes: string;
+}
+
+export function emptyResults(): ExperimentResults {
+  return {
+    exposure_event: '',
+    variants: ['Control', 'Variant B'],
+    exposures: [null, null],
+    metrics: [],
+    notes: '',
+  };
+}
+
 export type ExperimentResult = 'In Progress' | 'Winner' | 'Loser' | 'Inconclusive' | 'Stopped';
 
 export interface Experiment {
@@ -40,10 +86,12 @@ export interface Experiment {
     guardrail: string[];
   };
   result: ExperimentResult;
+  ice_score: number | null;
+  sprint: string | null;
   revenue_impact: string | null;
   creator: string;
-  baseline_data: string;
-  current_data: string;
+  stage_history: StageEntry[];
+  results: ExperimentResults;
   start_date: string | null;
   end_date: string | null;
   duration_days: number | null;

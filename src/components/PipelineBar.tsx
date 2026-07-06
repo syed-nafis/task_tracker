@@ -1,6 +1,6 @@
 'use client';
 
-import { PIPELINE_STAGES, ExperimentStatus } from '@/lib/types';
+import { PIPELINE_STAGES, PHASES, ExperimentStatus } from '@/lib/types';
 
 interface PipelineBarProps {
   status: ExperimentStatus;
@@ -57,9 +57,17 @@ export function PipelineBar({ status, compact = false }: PipelineBarProps) {
           );
         })}
       </div>
-      <div className="flex justify-between text-xs text-slate-900 dark:text-white/30">
-        <span>Idea</span>
-        <span>Completed</span>
+      {/* Phase tick marks */}
+      <div className="flex gap-0.5">
+        {PHASES.map((phase) => (
+          <div
+            key={phase.name}
+            className="text-center text-[9px] uppercase tracking-wide text-slate-400 dark:text-white/25 border-l border-slate-200 dark:border-white/10 first:border-l-0"
+            style={{ flex: phase.stages.length }}
+          >
+            {phase.name}
+          </div>
+        ))}
       </div>
     </div>
   );

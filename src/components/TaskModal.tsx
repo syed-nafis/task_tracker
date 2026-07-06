@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { X, Plus, Trash2 } from 'lucide-react';
+import { X, Plus } from 'lucide-react';
 import type { Task, TaskStatus, TaskType, Subtask } from '@/lib/types';
 
 const TASK_TYPES: TaskType[] = ['GA4 Report', 'Analysis', 'General', 'Other'];

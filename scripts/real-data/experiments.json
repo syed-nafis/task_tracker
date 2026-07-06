@@ -1,0 +1,6860 @@
+[
+ {
+  "id": 1,
+  "test_id": "TEST-001",
+  "title": "Home Page — since it a sales page, book items are priced aggresively,",
+  "status": "Monitoring",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "home page"
+  ],
+  "hypothesis": "since it a sales page, book items are priced aggresively, but because of low visibility and low discoverablity users dont get to see this page, increasing the discoverability of this category page, lowering conversion from this category. increasing visibility should increase view_items, and increase purchases from this category.",
+  "problem_statement": "extra-discount-book category page is hidden away, not easily discoverable",
+  "metrics": {
+   "primary": "last 3 months: nov-dec-jan\n\npage_views : was - 0.043%\nactive_users : was - 0.13%\n\nATC rate: 25.23% \nCR rate: 1.8%\n\npurchase count: 198\ndaily purchase: 2.15 / day",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": "comparing last 3 months : nov-dec-jan\nfrom this section\n\nprev: 92 days\ntotal orders = 198\ndaily orders = 2.15 / day\nAOV = 908.94\n\nexperiment : 26 days\ntotal orders = 213\ndaily orders = 8.19 / day\nAOV = 1063.25\n\ntotal gain compared to last 3 months = \n(8.19-2.15)*26*1082.38 = 1,66,972.78 BDT\n - looks alot inflated, as this section has alot of free ebooks + lower cost books, do not reflect our AOV\n- purchase count for nov-dec might look lower due to the existing purchase_event bug, which have been solved\n- but purchase did increase from this section.",
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-01T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-02-09T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "from April+May report"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "March · baseline",
+    "April",
+    "May",
+    "Total"
+   ],
+   "exposures": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Page views (view_extra-discount-books)",
+     "kind": "count",
+     "values": [
+      5469.0,
+      5405.0,
+      10487.0,
+      21361.0
+     ]
+    },
+    {
+     "name": "viewed a book (clicked a book)",
+     "kind": "count",
+     "values": [
+      2724.0,
+      3496.0,
+      6627.0,
+      12847.0
+     ]
+    },
+    {
+     "name": "Add to cart (atc)",
+     "kind": "count",
+     "values": [
+      772.0,
+      1265.0,
+      1952.0,
+      3989.0
+     ]
+    },
+    {
+     "name": "Purchased a book",
+     "kind": "count",
+     "values": [
+      150.0,
+      193.0,
+      322.0,
+      665.0
+     ]
+    }
+   ],
+   "notes": "current results : \npage_views : currently - 0.06%\nactive_users : currently - 0.25%\n\nATC rate: 21.92% \nCR rate: 4.5%\n\npurchase count: 213\ndaily purchase: 10.46 / day\n[April] Monthly orders and AOV metrics exclude February to prevent data skew from peak book sales. | Performance remained positive despite significant dips in book orders surrounding Eid. | Sold-count was slightly lower; need to investigate root cause.\n[May] Section traffic nearly doubled in May (10,487 views vs. the ~5,400/month pre-ship baseline) as the new nav placement compounded reach. | Browse-to-product conversion lifted and held: view_item rose from 49.8% pre-ship (March) to 63–65% across April and May. | Purchase rate held steady at ~3% of section views — purchase volume grew with traffic (150 → 322), though ATC and purchase conversion softened slightly from April's peak."
+  },
+  "start_date": "2026-02-09T00:00:00.000Z",
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "clear increase in user engagement for this category. total conversion also increased. · Report pill: ✓ Holding · Report months: April+May · April status: ✓ Shipped A",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-01T00:00:00.000Z",
+  "potential_outcome": "increase \"extra-discount-books\" page_views and view_items, should also improve purchase_count as visibility increase."
+ },
+ {
+  "id": 2,
+  "test_id": "TEST-002",
+  "title": "Home Page (Quick-Deal Section) — outdated stock amount makes the urgency trigger not work as",
+  "status": "Monitoring",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "home page (quick-deal section)"
+  ],
+  "hypothesis": "outdated stock amount makes the urgency trigger not work as intended, as design is not consistant, also products are shown with their full stock amount. having proper urgency set will increase browsing or deal products, and the urgency will lead to mroe ATC and more purchases",
+  "problem_statement": "stock qty is pre-set when the products are entered into deal. The qty-sold status text does not updaate as items are being sold and is not consistent with the urgency bar",
+  "metrics": {
+   "primary": "Last 3 months data:\n\nview_items : 0.2%\natc rate : 27.02%\nconversion rate : 2%",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": "comparing last 3 months : nov-dec-jan\nfrom this section\n\nprev: 92 days\ntotal orders = 654\ndaily orders = 7.1 / day\nAOV = 908.94\n\nexperiment : 32 days\ntotal orders = 289\ndaily orders = 9.03 / day\nAOV = 1063.25\n\ntotal gain compared to last 3 months = \n(9.03 - 7.1)*32*1063.25 = 65,666.32 BDT\n\n- 18 fequently selling super-deal items are selected for analysis, which were available for nov-dec-jab-feb\n- purchase count for nov-dec might look lower due to the existing purchase_event bug, which have been solved",
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-11T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-02-02T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "current results : \nview_items : 0.3%\natc rate : 23.74%\nconversion rate : 1.8%"
+  },
+  "start_date": "2026-02-02T00:00:00.000Z",
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "need to wait longer for a more clear picture, current data maybe be misleading and is subject to change",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-11T00:00:00.000Z",
+  "potential_outcome": "should increase view_item events for quick-deal items whose status have been updated"
+ },
+ {
+  "id": 3,
+  "test_id": "TEST-003",
+  "title": "Product Details Page — for regularly top-selling products, want to check the",
+  "status": "Monitoring",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "for regularly top-selling products, want to check the impact of changing their img with generated imgs using our internal tool. For products with lower img quality it should boost views and atc, and hopefully CR, and for products with existing good img quality, it should still increase views and atc.",
+  "problem_statement": "want to test the effectiveness of AI generated product images",
+  "metrics": {
+   "primary": "Last 3 months data:\n\nview_items : 0.31%\natc rate : 11.58%\nconversion rate : 1.6%",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": "comparing last 3 months : nov-dec-jan\nfrom this section\n\nprev: 92 days\ntotal orders = 416\ndaily orders = 4.5 / day\nAOV = 908.94\n\nexperiment : 34 days\ntotal orders = 228\ndaily orders = 6.7 / day\nAOV = 1063.25\n\ntotal gain compared to last 3 months = \n(6.7.4.5)*34*1063.25 = 79,531.1 BDT\n\n- purchase count for nov-dec might look lower due to the existing purchase_event bug, which have been solved",
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-02-01T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "current results : \nview_items : 0.25%\natc rate : 11.84%\nconversion rate : 2.4%"
+  },
+  "start_date": "2026-02-01T00:00:00.000Z",
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Even though view_items for the selected items showed to go down, it lead to a higher conversion. \n\n- looking at the item level, for items that had better original images performed worse, which is expected, as the image quality and information convayed matters, instead of generated methods.",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": "some products which have poor img quality should increase their view_item events, for others with good img quality should not have much effect on view_item events."
+ },
+ {
+  "id": 4,
+  "test_id": "TEST-004",
+  "title": "Product Details Page — removing negative social proof i.e (no review for products",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "removing negative social proof i.e (no review for products with ratings but 0 review) will help increase view_item -> ATC rate and increase purchase",
+  "problem_statement": "products with no review : shows no reivew. can discourage users from buying this item, as it may make the product seem less trustworthy",
+  "metrics": {
+   "primary": "Increased ATC Rate and CR",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Loser",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-01T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-01-06T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "Control : \nadd_to_cart rate : 9.29%\nCR : 0.09%\n\nExperiment :\nadd_to_cart rate : 9.86%\nCR : 0.1%"
+  },
+  "start_date": "2026-01-06T00:00:00.000Z",
+  "end_date": "2026-01-26T00:00:00.000Z",
+  "duration_days": 20,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-01T00:00:00.000Z",
+  "potential_outcome": "will increase \n1. view_item -> ATC rate \n2. increase CR \n3. increase view_item engagement for 0 review items"
+ },
+ {
+  "id": 5,
+  "test_id": "TEST-005",
+  "title": "Home Page (Quick-Deal Section) — Removing brand info from product cards from the deal page",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "home page (quick-deal section)"
+  ],
+  "hypothesis": "Removing brand info from product cards from the deal page will reduce brand bias and increase browsing and discovery of non-brand/generic products, leading to higher click-through rates on non-brand deals and an overall increase in add-to-carts from the deal page without significantly hurting revenue per visitor.",
+  "problem_statement": "some products in quick-deal section show their brand information as \"non-brand\", app doesn't have brand information for quick-deal product cards.",
+  "metrics": {
+   "primary": "Main : \n1. quick_deal->view_item does remains the same or increases \n\n2. stop : if view_item decreases or RPV(revenue per visitor) decreases",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Loser",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-02T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-01-06T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "Control : \nview_item rate : 32%\nadd_to_cart rate : 3.9%\nCR : 0.2%\n\nExperiment :\nview_item rate : 32%\nadd_to_cart rate : 4.1%\nCR : 0.2%"
+  },
+  "start_date": "2026-01-06T00:00:00.000Z",
+  "end_date": "2026-01-26T00:00:00.000Z",
+  "duration_days": 20,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-02T00:00:00.000Z",
+  "potential_outcome": "will increase : \n1. non-brand engagement \n2. ATC rate for non-brand products \n3. increase CR for non-brand products"
+ },
+ {
+  "id": 6,
+  "test_id": "TEST-006",
+  "title": "Homepage — recently sold products, is not as relatable as \"Just bought",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Homepage"
+  ],
+  "hypothesis": "recently sold products, is not as relatable as \"Just bought by others\", \"Recently Bought in your city\" , \"Customers Recently Bought\"",
+  "problem_statement": "on homepage, there is a section named \"Recently Sold Products\",  it can be changed to cater more towards",
+  "metrics": {
+   "primary": "Increased User Engagement and CTR",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": "comparing last 3 months : oct-nov-dec\nfrom this section\n\nprev: 92 days\ntotal orders = 182\ndaily orders = 2.02 / day\nAOV = 1040.99\n\nexperiment : 20 days\ntotal orders = 60\ndaily orders = 3 / day\nAOV = 1082.38\n\ntotal gain compared to last 3 months = \n(3-2.02)*20*1082.38 = 21,214.65 BDT\n\nCR increase on test variant:\ncontrol purchase : 16\nexperiment purchase : 19\nDelta revenue gain  = (19-16)*1082.38 = 3,247.14 BDT",
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-03T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-01-06T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "Control : \nview_item : 30.79%\nadd_to_cart rate : 3.31%\nCR : 0.22%\n\nExperiment :\nview_item : 32.92%\nadd_to_cart : 4.47%\nCR : 0.25%"
+  },
+  "start_date": "2026-01-06T00:00:00.000Z",
+  "end_date": "2026-01-26T00:00:00.000Z",
+  "duration_days": 20,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-03T00:00:00.000Z",
+  "potential_outcome": "will increase : User Engagement and CTR on the section"
+ },
+ {
+  "id": 7,
+  "test_id": "TEST-007",
+  "title": "Home Page — The original title is too long and in Bengali. Changing it",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Home Page"
+  ],
+  "hypothesis": "The original title is too long and in Bengali. Changing it to \"Products Selling Fast\" (an easy to read English title) creates a sense of urgency and \"FOMO\" (Fear Of Missing Out).",
+  "problem_statement": "a section this tittle \"সাম্প্রতিক যেসকল পণ্য আমাদের গ্রাহকেরা বেশি নিচ্ছেন\" is too long and visitors may skip this section entirely without browsing any items from this section.",
+  "metrics": {
+   "primary": "Increase in \"View Item\" events for products in this slider.",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": "comparing last 3 months : oct-nov-dec\nfrom this section\n\nprev: 92 days\ntotal orders = 263\ndaily orders = 2.86 / day\nAOV = 1040.99\n\nexperiment : 20 days\ntotal orders = 80\ndaily orders = 4 / day\nAOV = 1082.38\n\nDelta gain compared to last 3 months = \n(4-2.86)*20*1082.38 = 24,678.26 BDT\n\nCR increase on test variant:\ncontrol purchase : 16\nexperiment purchase : 23\nDelta revenue gain  = (23-16)*1082.38 = 7,576.66 BDT",
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-04T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-01-06T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "Control : \nview_item rate : 32.2%\nadd_to_cart rate : 3.94%\nCR : 0.2%\n\nExperiment :\nview_item rate : 31.4%\nadd_to_cart rate : 3.98%\nCR : 0.3%"
+  },
+  "start_date": "2026-01-06T00:00:00.000Z",
+  "end_date": "2026-01-26T00:00:00.000Z",
+  "duration_days": 20,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-04T00:00:00.000Z",
+  "potential_outcome": "Increase in \"View Item\" events for products in this slider."
+ },
+ {
+  "id": 8,
+  "test_id": "TEST-008",
+  "title": "Home Page — This was our first test case for our AB test, so we chose a",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Home Page"
+  ],
+  "hypothesis": "This was our first test case for our AB test, so we chose a simpler section which is further down on our home page. This is our control for other tests, to test the stats engine of GrowthBook.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "increase CTR for this section",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Loser",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-05T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-01-06T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "Control : \nview_item : 28.84%\n\nExperiment :\nview_item : 29.41%"
+  },
+  "start_date": "2026-01-06T00:00:00.000Z",
+  "end_date": "2026-01-26T00:00:00.000Z",
+  "duration_days": 20,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-05T00:00:00.000Z",
+  "potential_outcome": "increase CTR for this section"
+ },
+ {
+  "id": 9,
+  "test_id": "TEST-009",
+  "title": "Cart Page — If we fix the login redirect and enable cross-platform cart",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Cart Page"
+  ],
+  "hypothesis": "If we fix the login redirect and enable cross-platform cart syncing, users who start checkout but are forced to log in will return directly to their cart or payment page, reducing friction and increasing completed purchases",
+  "problem_statement": "/cart page login-redirect on web (mobile+desk) : \n1. if app installed -> not loggedin app : doesnt not auto log into app \n2. if app installed -> logged into app : the added cart items doesn not show up",
+  "metrics": {
+   "primary": "Main: \n1. continue_to_cart_next -> purchase ⬆️ \ncuurent : 33.2%, \nwin : CCR ~35% \n\n2. total purchase ⬆️",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-06T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-06T00:00:00.000Z",
+  "potential_outcome": "1. increase our total monthly purchases/conversion from website (mobile + desk) \n\n2. increase our CCR (checkout complition rate) -> by 7% (from 33.2% -> 40%)"
+ },
+ {
+  "id": 10,
+  "test_id": "TEST-010",
+  "title": "Product Details Page — Adding a “Buy Now” CTA on web (mobile + desktop) product",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "Adding a “Buy Now” CTA on web (mobile + desktop) product pages will increase CR by streamlining the checkout flow for high-intent users.",
+  "problem_statement": "buy now CTA : is there for app but not for web \nMore than half of our monthy buyers make single item purchases. \nFor last 6 months purchases single item : 3,96,836 (54% of total orders) multi item: 3,39,462",
+  "metrics": {
+   "primary": "Main: \n1. view_item -> purchase ⬆️ \ncurrent : 1.4%, \nwin : 1.5% ~ 1.7% \n2. total purchase ⬆️",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-07T00:00:00.000Z",
+  "potential_outcome": "Increase conversion rate (CR) from 1.4% to 1.5%-1.7% and raise total purchases by simplifying the checkout process for users on web."
+ },
+ {
+  "id": 11,
+  "test_id": "TEST-011",
+  "title": "Product Details Page — countdown timer only present for quick deal items, in their",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "countdown timer only present for quick deal items, in their product_details page, in the app. not there for web",
+  "metrics": {
+   "primary": "Main: \n1. add to cart rate ⬆️ \ncuurent : 0.86%, \nwin : ~3% \n\n2. Increase CTR (need to calculate)",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-08T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-08T00:00:00.000Z",
+  "potential_outcome": "Significant increase in the add_to_cart rate from 0.86% to 3% or more increase CTR from deal section to view_item"
+ },
+ {
+  "id": 12,
+  "test_id": "TEST-012",
+  "title": "Shipping Page — Adding social proofs to our shipping page, will increase",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Shipping Page"
+  ],
+  "hypothesis": "Adding social proofs to our shipping page, will increase CCR. example social proofs 1. 7 day happy return 2. 100% money back gurantee 3. authentic products - guranteed by rokomari 4. get points",
+  "problem_statement": "no social proof badges on shipping page : present in app",
+  "metrics": {
+   "primary": "Main: \n1. continue_to_cart_next -> purchase ⬆️ \ncuurent : 33.2%, \nwin : CCR ~35% \n\n2. total purchase ⬆️",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-09T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-09T00:00:00.000Z",
+  "potential_outcome": "An increase in the Checkout Completion Rate (CCR) from 33.2% to approximately 35%"
+ },
+ {
+  "id": 13,
+  "test_id": "TEST-013",
+  "title": "Shipping Page — Displaying item-level order details on the shipping page",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Shipping Page"
+  ],
+  "hypothesis": "Displaying item-level order details on the shipping page will reduce user confusion, increase checkout continuation rates, and increase completed purchases compared to displaying only a total amount.",
+  "problem_statement": "add cart-items/order details for shipping page, users cant see thier order-value for each item, only the total. which can lead to confusion about the total price,",
+  "metrics": {
+   "primary": "Main: \n1. continue_to_cart_next -> purchase ⬆️ \ncuurent : 33.2%, \nwin : CCR ~35% \n\n2. total purchase ⬆️",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-10T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-10T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 14,
+  "test_id": "TEST-014",
+  "title": "Product Details Page — Adding social proofs to each of our product details page,",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "Adding social proofs to each of our product details page, will increase add_to_cart rate.",
+  "problem_statement": "add social proof badges to product_page : app has them but web doesnt",
+  "metrics": {
+   "primary": "Main: \n1. add to cart rate ⬆️ \ncuurent : 0.86%, \nwin : ~3% \n\n2. Increase CTR (need to calculate)",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-11T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-11T00:00:00.000Z",
+  "potential_outcome": "A projected increase in the add_to_cart rate from 0.86% to 3% or more"
+ },
+ {
+  "id": 15,
+  "test_id": "TEST-015",
+  "title": "Quick Deal Details — showing item-sold count for quick-deal items will",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Quick Deal Details"
+  ],
+  "hypothesis": "showing item-sold count for quick-deal items will re-inforce customer trust, and lead to mroe atc rate and purchases",
+  "problem_statement": "item sold count for quick deal items : present in app but not on web",
+  "metrics": {
+   "primary": "Increased ATC Rate and Purchases",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-12T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-12T00:00:00.000Z",
+  "potential_outcome": "Increased ATC Rate and Purchases"
+ },
+ {
+  "id": 16,
+  "test_id": "TEST-016",
+  "title": "Home Page (Quick-Deal Section) — Add low-stock badges for our quick cart items, induces",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "home page (quick-deal section)"
+  ],
+  "hypothesis": "Add low-stock badges for our quick cart items, induces scarcity for users, which will lead to higher ATC rate and increased CR",
+  "problem_statement": "no limited in stock badges for quick deal items",
+  "metrics": {
+   "primary": "Increased ATC Rate and CR",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-13T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-13T00:00:00.000Z",
+  "potential_outcome": "will increase 1. view_item -> ATC rate 2. increase CR"
+ },
+ {
+  "id": 17,
+  "test_id": "TEST-017",
+  "title": "Various Pages — Standardizing section titles to one language (e.g., all",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "Various Pages"
+  ],
+  "hypothesis": "Standardizing section titles to one language (e.g., all English or all consistent Bangla) will reduce user confusion and cognitive load, leading to improved content engagement.",
+  "problem_statement": "some section tittles are in bangla, and some are in english, which can be abit confusing for users, and switching from english to bangla can increase cognitive load",
+  "metrics": {
+   "primary": "Reduced Cognitive Load, Increased Engagement",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-14T00:00:00.000Z",
+  "potential_outcome": "Reduced Cognitive Load, Increased Engagement"
+ },
+ {
+  "id": 18,
+  "test_id": "TEST-018",
+  "title": "Product Details Page — multiple pricing can lead to confusion and cognitive",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "multiple pricing can lead to confusion and cognitive overload for the user, amking it harder for them to make a decision. Thus removing regular price, wont have any negative impact on our ATC rate, and CR",
+  "problem_statement": "product_detail page for quick deal, show multiple pricing on web. which can confuse our visitors \n1. deal price \n2. regular price \n3. mrp price \n4. amount saved",
+  "metrics": {
+   "primary": "Increased ATC Rate and CR",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2025-12-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2025-12-15T00:00:00.000Z",
+  "potential_outcome": "Improved ATC Rate and CR"
+ },
+ {
+  "id": 19,
+  "test_id": "TEST-019",
+  "title": "Product Details Page — does not contain stock left information in product details",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "does not contain stock left information in product details page,  even though its there for the product card in deal section",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-11T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-11T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 20,
+  "test_id": "TEST-020",
+  "title": "Page Not Found - Page — when a certin product doesnt exist, it only says \"page not",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Page not found - page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "when a certin product doesnt exist, it only says \"page not found\", we could suggest mroe products, or have a more user friendly copy saying \" we dont want to loose you - browse other products\"",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 21,
+  "test_id": "TEST-021",
+  "title": "Product Details Page — PDP redeisgn maximising 1. social-proof and trust 2.",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Product Details Page"
+  ],
+  "hypothesis": "PDP redeisgn maximising \n1. social-proof and trust\n2. urgency\n3. interactive-ness",
+  "problem_statement": "current PDP page is simple and cluttered at the same time, without attractive visual ques and segments to organise the product information on page effeciently, and was not designed to invoke certain emotions within our visitors in mind.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "tuhin vai",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 22,
+  "test_id": "TEST-022",
+  "title": "Search / Category Page — For electronics item-cards on electronics search/category",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "search / category page"
+  ],
+  "hypothesis": "For electronics item-cards on electronics search/category pages, showing specifications on the product card, will help our users make their purchase decision sooner. it will reduce redundant view_items, users should browse PDP with stronger intention to purchase, lowering our bounce-rate for electronics items view_item -> purchase.",
+  "problem_statement": "Sepcifications for Electronics products matter alot, which can only be viewed on the product_details page. Right now to choose an electronics product one user needs to search the prodcut -> goto a products detail page -> come back to search/category page -> checkout another product. this back and forth is time consuming, and can deal to the users purchase intention fading",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 23,
+  "test_id": "TEST-023",
+  "title": "Quick-Deal Page — no urgency element",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "quick-deal page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "no urgency element",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "growth hack - business",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 24,
+  "test_id": "TEST-024",
+  "title": "Cart Page — notifying users of price drop, will increase",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Cart Page"
+  ],
+  "hypothesis": "notifying users of price drop, will increase conversion/purchases",
+  "problem_statement": "alot of users might not be aware that certain items in their cart, had a price drop or has been added to deal section.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 25,
+  "test_id": "TEST-025",
+  "title": "Deal Page / Search Page / Category Page — adding quick-deal sticker for quick-deal items on category",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "deal page / search page / category page"
+  ],
+  "hypothesis": "adding quick-deal sticker for quick-deal items on category and search pages should increase views, atc and cr rates.",
+  "problem_statement": "no way to distinguish deal items from regular sale items on search page or category page",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-25T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-25T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 26,
+  "test_id": "TEST-026",
+  "title": "Pdp + Cart Page — add 10 - 20 - 30 -60 min timer on PDP for certain products.",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "PDP + cart page"
+  ],
+  "hypothesis": "add 10 - 20 - 30 -60 min timer on PDP for certain products. Would increase atc, checkout and conversion rates",
+  "problem_statement": "PDP + cart lacks FOMO elements",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-31T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 27,
+  "test_id": "TEST-027",
+  "title": "Category + Search Pages + Pdp — show one batch with free , and one with price crossed out",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Category + search pages + PDP"
+  ],
+  "hypothesis": "show one batch with free , and one with price crossed out to 0. should increase views, atc, and conversion rates.",
+  "problem_statement": "certain eBooks are priced at 0 with offers that do not match",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-01-31T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-01-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 28,
+  "test_id": "TEST-028",
+  "title": "analyze category-wise churn to improve our user retention /",
+  "status": "Idea",
+  "platform": [],
+  "pages": [],
+  "hypothesis": "",
+  "problem_statement": "analyze category-wise churn to improve our user retention / reduce churn",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-01T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-01T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 29,
+  "test_id": "TEST-029",
+  "title": "Login — email login can be a source of stress for a significant",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "login"
+  ],
+  "hypothesis": "email login can be a source of stress for a significant portion of our users, as most people would consider loging in with phone and otp. Thus having phone before email, in the login placeholder text, and showing two options for login with OTP and regularl login, can reduce our drop-off and make login smoother.",
+  "problem_statement": "our currnet login has significant friction (drop-off) evident from GA4 and MS Clarity",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-15T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 30,
+  "test_id": "TEST-030",
+  "title": "Quick-Deal — A daily 24H timer for quick-deal items would increase",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "quick-deal"
+  ],
+  "hypothesis": "A daily 24H timer for quick-deal items would increase urgency and increase our atc + checkout + conversion rates. for each day of the week we will show different products/items in deal.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "growth hack - business",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-15T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 31,
+  "test_id": "TEST-031",
+  "title": "Home-Page — add \"foreign-books-price-filter categories\" in app-android,",
+  "status": "Idea",
+  "platform": [
+   "App-Android"
+  ],
+  "pages": [
+   "home-page"
+  ],
+  "hypothesis": "add \"foreign-books-price-filter categories\" in app-android, similar to our mobile-web version. This should increase conversion from this category in the app, as our app has more avg. engagement time per user than web.",
+  "problem_statement": "a new section : foreign-books-price-filter categories section got addded in our web version, it is available in app but only in the boimela page, not on the home page. Even though on web it is present on the home-page, and is performing well in terms of user-engagement and conversion",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-15T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 32,
+  "test_id": "TEST-032",
+  "title": "Home-Page — the web-mobile design is more catchy, thus a similar design",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "home-page"
+  ],
+  "hypothesis": "the web-mobile design is more catchy, thus a similar design to web-mobile on web-desktop would increase engagement in web-desktop version",
+  "problem_statement": "the desgin from foreign-books-price-filter categories section is slightly different in our web-mobile than our  web-desktop, and our web-mobile is performing significantly better than web-desktop",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-15T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 33,
+  "test_id": "TEST-033",
+  "title": "Home-Page — right now in the freign-books-price-filter categories",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android"
+  ],
+  "pages": [
+   "home-page"
+  ],
+  "hypothesis": "right now in the freign-books-price-filter categories \"under 299\" sub-section has significantly lower browsing, this can be due to the placement of this section. we can re-arrange the sections like under-299 -> under-199 -> under99 -> free-shipping, this should increase engagement in this sub-section.",
+  "problem_statement": "\"under 299\" section right beside \"free-shipping\" , most expensive section right beside \"free-shipping\"",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-15T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 34,
+  "test_id": "TEST-034",
+  "title": "Foreign-Books Price Filter Category Pages — add navigation sections on each of these category pages, so",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android"
+  ],
+  "pages": [
+   "foreign-books price filter category pages"
+  ],
+  "hypothesis": "add navigation sections on each of these category pages, so a user can navigate to the other categories,",
+  "problem_statement": "no-way to go the other sub-sections (under 99, under 199, under 299, free-shipping) from a sub-section.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-15T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-15T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 35,
+  "test_id": "TEST-035",
+  "title": "Foreign-Books Price Filter Category Pages — adding a tittle \"Foreign Books\" and under that if we keep",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android"
+  ],
+  "pages": [
+   "foreign-books price filter category pages"
+  ],
+  "hypothesis": "adding a tittle \"Foreign Books\" and under that if we keep the categories, highlighting the price filters, i.e under 99, under 199 etc. that will increase CTR for this section leading to a higher conversion.",
+  "problem_statement": "\"foriegn books\" repeating for each cateogry on the home page",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-17T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-17T00:00:00.000Z",
+  "potential_outcome": "More traffic to these sections,"
+ },
+ {
+  "id": 36,
+  "test_id": "TEST-036",
+  "title": "Home-Page — 1. create clearance sale category page 2. design product",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "home-page"
+  ],
+  "hypothesis": "1. create clearance sale category page\n2. design product cards with sticker\n3. add page to navbar / menu-bar",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-18T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-18T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 37,
+  "test_id": "TEST-037",
+  "title": "Home-Page — 1. create free-shipping category page 2. design product",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "home-page"
+  ],
+  "hypothesis": "1. create free-shipping category page\n2. design product cards with sticker\n3. add page to navbar / menu-bar",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-18T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-18T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 38,
+  "test_id": "TEST-038",
+  "title": "Navbar / Menu-Bar — home navigation in the menu-bar is kind of redundant.",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "navbar / menu-bar"
+  ],
+  "hypothesis": "home navigation in the menu-bar is kind of redundant. Removing it should not have any negative effects.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-18T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-18T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 39,
+  "test_id": "TEST-039",
+  "title": "Category Page — timer should create fomo for certain products, leading to",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "category page"
+  ],
+  "hypothesis": "timer should create fomo for certain products, leading to quicker conversion.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-23T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-23T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 40,
+  "test_id": "TEST-040",
+  "title": "Shipping-Page — back navigation to cart page might be due to",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "shipping-page"
+  ],
+  "hypothesis": "back navigation to cart page might be due to checkout_summary not being properly visible, or intuitive to use, bringing it in the same page will reduce this back navigation, and lead to more CR",
+  "problem_statement": "28% of our users navigate back to cart page from shipping page",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-23T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-23T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 41,
+  "test_id": "TEST-041",
+  "title": "send notification to users, if an item in their cart is",
+  "status": "Idea",
+  "platform": [
+   "App-Android"
+  ],
+  "pages": [],
+  "hypothesis": "send notification to users, if an item in their cart is added to quick deals",
+  "problem_statement": "users are not aware of their cart-item has gone on sale",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-23T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-23T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 42,
+  "test_id": "TEST-042",
+  "title": "Shipping Page — re-ordering the address form to reduce friction, and",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "re-ordering the address form to reduce friction, and autofill some fields if possible, this will reduce the time taken to fill out address form, leading to more CR",
+  "problem_statement": "new users with no saved address, need to fill out the address form",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-23T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-23T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 43,
+  "test_id": "TEST-043",
+  "title": "Shipping Page — test \"Confirm Order\" CTA placement",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "test \"Confirm Order\" CTA placement",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-02-24T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-02-24T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 44,
+  "test_id": "TEST-044",
+  "title": "test which CTA performs better",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android"
+  ],
+  "pages": [],
+  "hypothesis": "test which CTA performs better",
+  "problem_statement": "e-book CTA have different versions \"Read E-Book\" or \"Buy E-Book\"",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-08T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-08T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 45,
+  "test_id": "TEST-045",
+  "title": "Pdp — \"Arrives before Eid\" for products that are fast selling,",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "PDP"
+  ],
+  "hypothesis": "\"Arrives before Eid\" for products that are fast selling, and we can deliver quick",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 46,
+  "test_id": "TEST-046",
+  "title": "Home-Page — \"arrives before eid\" - frontlist with eid specific items.",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk",
+   "App-Android",
+   "App-iOS"
+  ],
+  "pages": [
+   "home-page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "\"arrives before eid\" - frontlist with eid specific items.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 47,
+  "test_id": "TEST-047",
+  "title": "Shipping Page — stacked payment methods take up unnecessart space. a grid",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "stacked payment methods take up unnecessart space. a grid view can save important space above the fold, making everything visible on the first load and easier for users to complete their purchase.",
+  "problem_statement": "shipping page need to scroll, especially when no address is saved. stacked payment methods take up unnecessary space.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 48,
+  "test_id": "TEST-048",
+  "title": "Shipping Page — a sticky total payable and amount saved, above the",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "a sticky total payable and amount saved, above the \"Complete Payment\" CTA will reduce users cognitive burden, and streamline their purchase journey.",
+  "problem_statement": "order summary is hidded by default, and total payable is group together with payment methods not easily differentiable",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 49,
+  "test_id": "TEST-049",
+  "title": "Cart Page — moving apply promo-code to cart page, increase CR from",
+  "status": "SQA",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "cart page"
+  ],
+  "hypothesis": "moving apply promo-code to cart page, increase CR from shipping -> order confirm.",
+  "problem_statement": "apply promo code in shipping page can distract users, to look for promo codes, instead of completing the order. It also dilutes our shipping page data, as users can navigate to shipping page jsut to check the total amount after promo code applied. \ncomparing last 3 months data - \n\npromo-code applied + completed order: 24,873\npromo-code applied +  not completed order: 19,128",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   },
+   {
+    "stage": "SQA",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "from April+May report"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: QA Testing · Report months: April+May · Report label: TEST-020 · April status: QA Testing",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 50,
+  "test_id": "TEST-050",
+  "title": "Shipping Page — showing smaller item cards in the product summary, can",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "showing smaller item cards in the product summary, can reduce congnitive load on users, make their purchase journey more seemless.",
+  "problem_statement": "in-side cart summary users cannot see the items they are purchasing",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 51,
+  "test_id": "TEST-051",
+  "title": "Cart Page — moving adress to shipping page, will reduce",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "cart page"
+  ],
+  "hypothesis": "moving adress to shipping page, will reduce back-navigations to cart page, and increase CR from shipping -> order_confirm.",
+  "problem_statement": "shipping address for saved addreses are showed in the cart page, and not in the shipping page, which mixes up our data, and page functionality, which can increase back-navigations from shipping page to check the order address",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-14T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-14T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 52,
+  "test_id": "TEST-052",
+  "title": "Home Page — the front-list \"Featured Categories\" only has book",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "home page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "the front-list \"Featured Categories\" only has book categories with broken down by different stages of academic level. so title is vague, we can have a better title, that will express the intent of the section/front-list better.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-30T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 53,
+  "test_id": "TEST-053",
+  "title": "Super-Store Page — on add_to_cart button click, change to primary and show",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "super-store page"
+  ],
+  "hypothesis": "on add_to_cart button click, change to primary and show text Go to cart will nudge users to goto cart and complete their purchase",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-03-30T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-03-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 54,
+  "test_id": "TEST-054",
+  "title": "Stationary-Pdp — If we increase the font size and potentially the weight of",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "stationary-pdp"
+  ],
+  "hypothesis": "If we increase the font size and potentially the weight of the \"You are saving\" section on mobile PDPs, then we will see an increase in Add-to-Cart (ATC) rates.",
+  "problem_statement": "in mobile view you are saving section is hardly noticable",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 55,
+  "test_id": "TEST-055",
+  "title": "Electronics-Pdp — If we increase the font size of the percentage discount",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "electronics-pdp"
+  ],
+  "hypothesis": "If we increase the font size of the percentage discount text (e.g., from 14px to 18px or 20px) to make it more prominent, then we will see an increase in Add-to-Cart (ATC) rates.\">",
+  "problem_statement": "we have alot of empty sapce in desktop pdp",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 56,
+  "test_id": "TEST-056",
+  "title": "Home — If we change the text to shorter, action-oriented copy",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "home"
+  ],
+  "hypothesis": "If we change the text to shorter, action-oriented copy (e.g., \"Last 1 – Order now!\") and change the font color to Red, then we will see a significant increase in Add-to-Cart (ATC) and Conversion Rates.\">",
+  "problem_statement": "the progress-bar copies can be alot stronger",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 57,
+  "test_id": "TEST-057",
+  "title": "Electronics-Category-Page — If we display the exact numerical rating (e.g., 4.2/5)",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "electronics-category-page"
+  ],
+  "hypothesis": "If we display the exact numerical rating (e.g., 4.2/5) alongside the star icons on product cards, then we will see an increase in Product Detail Page (PDP) click-through rates and overall conversion rates.",
+  "problem_statement": "product-cards do not show ratings number (i.e 4.5, 4.1)",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 58,
+  "test_id": "TEST-058",
+  "title": "Quick-Deal Page — If we increase the font size of the payable price (and",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "quick-deal page"
+  ],
+  "hypothesis": "If we increase the font size of the payable price (and potentially the % off) by 15-20% on product cards, then we will see an increase in Product List CTR and Add-to-Cart (ATC) rates.\">",
+  "problem_statement": "the price the crossed price, and percent off are all similar font size, ther eshould be a visual hierarchy",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 59,
+  "test_id": "TEST-059",
+  "title": "Quick-Deal Page — If we remove the crossed-out original price and only",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "quick-deal page"
+  ],
+  "hypothesis": "If we remove the crossed-out original price and only display the payable price and the percentage discount for mobile users, then we will see an increase in Add-to-Cart (ATC) and Conversion Rates.\"",
+  "problem_statement": "Deal section intent is the low price, the offer so users ivew the produc-page, when they view hte product page they will",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 60,
+  "test_id": "TEST-060",
+  "title": "If we move the paying price to the left and the crossed-out",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [],
+  "hypothesis": "If we move the paying price to the left and the crossed-out original price to the right, then we will see an increase in CTR and Conversion Rate.",
+  "problem_statement": "most users read from left to right. hacing hte payable price to the right mkaes it so the user needs to process more information, and increases their cognitive load over time.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 61,
+  "test_id": "TEST-061",
+  "title": "Sationnary-Pdp — If we display the \"Quick Deal\" badge (and potentially the %",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "sationnary-pdp"
+  ],
+  "hypothesis": "If we display the \"Quick Deal\" badge (and potentially the % off) on applicable items within the Related Products section, then we will see an increase in Related Product CTR and Cross-sell Conversion Rates.",
+  "problem_statement": "for the related product section in dekstop-ui-pdp if the product is in quick deal, it does not show quick deal.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 62,
+  "test_id": "TEST-062",
+  "title": "Electronics-Pdp — showing stock aount left in pdp as well, will continue the",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "electronics-pdp"
+  ],
+  "hypothesis": "showing stock aount left in pdp as well, will continue the scarcity of quick deal from quick-deal / home page to the entire pdp page, will increase atc rate",
+  "problem_statement": "even though product card shows the stock left amount, pdp does not, this breaks the scarcity that we are trying to induce",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-07T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-07T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 63,
+  "test_id": "TEST-063",
+  "title": "Cart Page — showing limited stock, or stock running our, badges for",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "cart page"
+  ],
+  "hypothesis": "showing limited stock, or stock running our, badges for quick deal items in cart, will increase checkout rate",
+  "problem_statement": "for quick deal items that are low in stock (10 or less) we do not show any urgency sticker or badge, in the cart page",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-24T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-24T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 64,
+  "test_id": "TEST-064",
+  "title": "Home Page — offer category grid tittle copy optimization",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk",
+   "Web-Mobile"
+  ],
+  "pages": [
+   "home page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "offer category grid tittle copy optimization",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-27T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-27T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 65,
+  "test_id": "TEST-065",
+  "title": "Shipping Page — testing new checkout-summary designs to optimise our",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "",
+  "problem_statement": "testing new checkout-summary designs to optimise our checkout experience",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-04T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-04T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 66,
+  "test_id": "TEST-066",
+  "title": "Pdp — scale related products quick deal badge, on electronics and",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "PDP"
+  ],
+  "hypothesis": "",
+  "problem_statement": "scale related products quick deal badge, on electronics and bok items as well",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-05T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-05T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 67,
+  "test_id": "TEST-067",
+  "title": "Home,Book,Electronics,Superstore — changing \"added to cart\" text with \"Go to Cart\" will signal",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "home,book,electronics,superstore"
+  ],
+  "hypothesis": "changing \"added to cart\" text with \"Go to Cart\" will signal to the user that they need to go to cart to complete their order. this will imrove Cart-to-Checkout progression and a reduction in session friction",
+  "problem_statement": "on mobile product-card, clicking ATC changes the btn test to \"added to cart\" and sunsequent button clicks results in a dead click.",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-05T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-05T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 68,
+  "test_id": "TEST-068",
+  "title": "Pdp — qucik-deal badge, related products",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "pdp"
+  ],
+  "hypothesis": "",
+  "problem_statement": "qucik-deal badge, related products",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-11T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-11T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 69,
+  "test_id": "TEST-069",
+  "title": "product-cards do not show low-stock urgency for low-stock",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "",
+  "problem_statement": "product-cards do not show low-stock urgency for low-stock products",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-20T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-20T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 70,
+  "test_id": "TEST-070",
+  "title": "Electronics - Product Pdp — adding a sold-count badge based on different segments will",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [
+   "Electronics - Product pdp"
+  ],
+  "hypothesis": "adding a sold-count badge based on different segments will increase our ATC rate and purchase rate",
+  "problem_statement": "alot of popular ecommerce show product sold count, but we do not, sowing this will induce social proof, and improve our atc rate and eventually purchase rate",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-06-10T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-06-10T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 71,
+  "test_id": "TEST-071",
+  "title": "Shipping Page — removing tittles and subtittles of payment-section should",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "shipping page"
+  ],
+  "hypothesis": "removing tittles and subtittles of payment-section should increase purchase rate",
+  "problem_statement": "right now our shipping page feels very wordy, with Tittles and sub-tittles of each payment method, but most people should understand the payment types just by seeing the logo",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-06-10T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-06-10T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 72,
+  "test_id": "TEST-072",
+  "title": "Electronics Pdp — a comparison table with have increased atc rate, and AOV",
+  "status": "Idea",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "electronics PDP"
+  ],
+  "hypothesis": "a comparison table with have increased atc rate, and AOV",
+  "problem_statement": "alot of popular ecommerce show a comparison table of related/similar electornics items, as electronics items usually have alot of specs to compare and for the same product there are different specs at different price range, it makes it easier for our visitors to quickly compare items at a glance and make a decision",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-06-09T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-06-09T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 73,
+  "test_id": "TEST-073",
+  "title": "Tbh — showing only in-stock products to certain visitors",
+  "status": "Idea",
+  "platform": [
+   "Web-Desk",
+   "Web-Mobile"
+  ],
+  "pages": [
+   "TBH"
+  ],
+  "hypothesis": "showing only in-stock products to certain visitors",
+  "problem_statement": "From analysis of our customer feedback it was found that our NPS score is -57 and the main reason of these customer complains are \"delayed delivery\". upo further analysis it was identified that one the root cause for delayed delivery is \"product not in stock\"",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-06-17T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-06-17T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 74,
+  "test_id": "TEST-074",
+  "title": "TEST-074",
+  "status": "Idea",
+  "platform": [],
+  "pages": [],
+  "hypothesis": "",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-06-17T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-06-17T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 75,
+  "test_id": "TEST-075",
+  "title": "TEST-075",
+  "status": "Idea",
+  "platform": [],
+  "pages": [],
+  "hypothesis": "",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-06-17T00:00:00.000Z",
+    "note": ""
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-06-17T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 76,
+  "test_id": "TEST-076",
+  "title": "Foreign book price-category — section redesign",
+  "status": "Monitoring",
+  "platform": [
+   "Web-Desk",
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "In the initial design it wasn't clear this was a clearance-sales section, and the \"Foreign Books\" label repeated for every row. A redesign (Filled & Light colour variants) to clarify intent and lift section CTR.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ✓ Ship Light"
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: "
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control value",
+    "Filled colour",
+    "Light colour"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants (experiment viewed)",
+     "kind": "count",
+     "values": [
+      72928.0,
+      51963.0,
+      45634.0
+     ]
+    },
+    {
+     "name": "Section CTR",
+     "kind": "value",
+     "values": [
+      1.52,
+      2.91,
+      2.45
+     ]
+    },
+    {
+     "name": "Purchase Rate",
+     "kind": "value",
+     "values": [
+      0.07,
+      0.1,
+      0.14
+     ]
+    },
+    {
+     "name": "Net revenue generated / month",
+     "kind": "value",
+     "values": [
+      682.2,
+      47754.0,
+      58669.2
+     ]
+    }
+   ],
+   "notes": "[April] High customer engagement in 'Under 99' and 'Free Shipping' categories. (almost x4 of the other 2 categories) These can be effect Book Sales Categories. | Sections has recently been removed | Archive the winning variant for future re-introduction.\n[May] High engagement in the 'Under 99' and 'Free Shipping' categories (~×4 the other two) — strong signal for clearance-style merchandising. | Despite positive results, the section was removed from the homepage during the homepage redesign — the lift is no longer being realised. | Winning Light variant archived for future re-introduction if the section returns."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report months: April+May · April status: ✓ Ship Light",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 77,
+  "test_id": "TEST-077",
+  "title": "QuickDeal Badge — Related Product Section",
+  "status": "Monitoring",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [
+   "Related Products"
+  ],
+  "hypothesis": "Shipped to the related-product section last month — a QuickDeal badge flags active deals at the point of discovery. Tracking the post-ship desktop funnel from badge click through to purchase.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ✓ Ship B"
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: Measured"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Active users (% of step 1)",
+    "Completion rate"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Related Products (with Badge) clicked (test clicked)",
+     "kind": "value",
+     "values": [
+      2221.0,
+      25.57
+     ]
+    },
+    {
+     "name": "Add to cart (atc)",
+     "kind": "value",
+     "values": [
+      568.0,
+      19.01
+     ]
+    },
+    {
+     "name": "Purchased a product",
+     "kind": "count",
+     "values": [
+      108.0,
+      null
+     ]
+    }
+   ],
+   "notes": "[April] Tracking Dilution: Users are correctly bucketed into variants, but the experiment is \"diluted\" when the viewed product lacks a Quick-Deal item in the first pagination. This leads to users being in a variant without actually experiencing the feature. | Next Step: Launch a new experiment that re-ranks related products to force \"Quick-Deal\" items into the first pagination. This will maximize visibility and minimize data noise from bucketed users who never see the treatment.\n[May] The badge pulled 2,221 desktop clicks into the funnel; ~1 in 4 (25.6%) reached add-to-cart and 4.9% converted to purchase. | High-value traffic: AOV of ৳947.05 is well above site average, so the 108 purchases carry an outsized ~৳1.02L in attributed revenue. | Biggest drop-off is at the click → ATC step (74.4% abandon). No control arm was captured, so revenue is gross-attributed, not incremental lift — add a holdout to quantify true impact."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: Measured · Report months: April+May · April status: ✓ Ship B",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 78,
+  "test_id": "TEST-078",
+  "title": "You-are-saving — font size optimisation",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "A more prominent savings amount nudges purchase intent. The current font size seems too small for our avg users. Bigger font should increase ATC and purchase rate.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ✓ Ship A"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "A",
+    "B",
+    "C"
+   ],
+   "exposures": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      39836.0,
+      40038.0,
+      39706.0,
+      40061.0
+     ]
+    },
+    {
+     "name": "ATC Rate",
+     "kind": "value",
+     "values": [
+      9.48,
+      0.35,
+      0.35,
+      0.51
+     ]
+    },
+    {
+     "name": "Purchase Rate",
+     "kind": "value",
+     "values": [
+      2.36,
+      2.41,
+      2.21,
+      2.34
+     ]
+    },
+    {
+     "name": "Net revenue generated / month",
+     "kind": "value",
+     "values": [
+      1065.69,
+      61277.18,
+      null,
+      null
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": "2026-04-30T00:00:00.000Z",
+  "duration_days": 12,
+  "remarks": "Report pill: ✓ Ship A · Report months: April",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 79,
+  "test_id": "TEST-079",
+  "title": "Checkout summary — clarity redesign",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "On our mobile shipping page, the checkout summary was hidden behind a toggle, showing only the total amount, which might not be intuitive for alot of our users, leading to high back navigation rate to the cart page, where the checkout summary is clearly visible, so we redesigned the checkout summary section to be clearly visible on the shipping page itself, which should reduce back navigation to the cart page, and leading to increased CR",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Inconclusive",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ↺ Iterate"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control value",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      3132.0,
+      2895.0
+     ]
+    },
+    {
+     "name": "Checkout conversion rate (CR)",
+     "kind": "value",
+     "values": [
+      63.3,
+      2.1
+     ]
+    },
+    {
+     "name": "Back-navigation rate",
+     "kind": "value",
+     "values": [
+      28.6,
+      0.9
+     ]
+    }
+   ],
+   "notes": "[April] Reduced back navigation but negatively impacted Conversion Rate (CR). | Explicit price breakdowns prior to payment likely triggered user hesitation. | Next steps: Test hidden dropdowns for checkout summary and placement (above/below payment methods)."
+  },
+  "start_date": null,
+  "end_date": "2026-04-30T00:00:00.000Z",
+  "duration_days": 4,
+  "remarks": "Report pill: ↺ Iterate · Report months: April",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 80,
+  "test_id": "TEST-080",
+  "title": "Item cards — show exact rating number",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "Displaying the exact rating number on item cards reduces unnecessary browsing and increases ATC rate and purchase rate.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ✗ Negative"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✓ Ship A"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control value",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      90712.0,
+      95664.0
+     ]
+    },
+    {
+     "name": "view_item rate",
+     "kind": "value",
+     "values": [
+      34.04,
+      0.56
+     ]
+    },
+    {
+     "name": "Add to cart (ATC) rate",
+     "kind": "value",
+     "values": [
+      10.25,
+      0.07
+     ]
+    },
+    {
+     "name": "Purchase rate",
+     "kind": "value",
+     "values": [
+      3.37,
+      0.17
+     ]
+    },
+    {
+     "name": "Net revenue impact / month",
+     "kind": "value",
+     "values": [
+      977.27,
+      168090.0
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": 27,
+  "remarks": "Report pill: ✓ Ship A · Report months: April+May · April status: ✗ Negative",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 81,
+  "test_id": "TEST-081",
+  "title": "ATC button Interaction change (English vs Bangla)",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "In mobile-veiw, clicking on \"Add to cart\" button changes the button text to \"Added to cart\" and subsequent clicks does not do anything. Changing the button text to \"Go to Cart\" / \"কার্টে যান\" so the next click navigates to our cart page. We tests both English and Bangla copy of the button text. (test implemented only for our superstore page)",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ↗ Scale test"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✓ Ship English"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control value",
+    "English",
+    "Bangla"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      2379.0,
+      1327.0,
+      2062.0
+     ]
+    },
+    {
+     "name": "View-cart rate",
+     "kind": "value",
+     "values": [
+      42.45,
+      5.32,
+      0.75
+     ]
+    },
+    {
+     "name": "Purchase rate",
+     "kind": "value",
+     "values": [
+      12.27,
+      7.24,
+      4.31
+     ]
+    },
+    {
+     "name": "Net revenue impact / month",
+     "kind": "value",
+     "values": [
+      977.27,
+      93818.0,
+      null
+     ]
+    }
+   ],
+   "notes": "[April] Low visibility. | Re-run on high-traffic/high-visibility pages to gather actionable data.\n[May] Both language variants lift purchase rate strongly vs control — English +59% (19.5%) and Bangla +35% (16.6%) — suggesting the \"Go to Cart\" navigation removes a real friction point in the superstore add-to-cart flow. | Samples are small (~1.3–2.1K/arm) and not yet significant. Scale the Bangla variant (more traffic, +35% purchase lift) site-wide to confirm on full traffic before shipping. | Granular view — Goto-cart click flow Filtering to users who clicked the \"Goto Cart\" button (control has no such CTA, baseline = 0), Bangla drives more clicks and converts at over 2× the purchase rate of English. Both variants generate entirely net-new purchases vs control. Metric Control English Bangla Goto-cart clicked 0 + 9.4% (+125) + 10.5% (+217) Purchase (of exposed) 0 + 2.5% (+33 orders) + 5.3% (+109 orders) Bangla incremental: 109 orders in 54d → 61/month → ৳59,613/month | This test was designed to keep our mobile-view consistent with our app UI. Due to a technical errorshuffle, this test may have to be re-run if our UX team decides the change is not effective."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": 54,
+  "remarks": "Report pill: ✓ Ship English · Report months: April+May · April status: ↗ Scale test",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 82,
+  "test_id": "TEST-082",
+  "title": "Item card — price font size increase",
+  "status": "Completed",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [],
+  "hypothesis": "Price is a key scanning signal. For our desktop view, a proportionally larger price (14/16/18/20 px) font should increase CTR.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: Scale Test"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A",
+    "Variant B",
+    "Variant C"
+   ],
+   "exposures": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      33.0,
+      47.0,
+      50.0,
+      52.0
+     ]
+    },
+    {
+     "name": "CTR",
+     "kind": "value",
+     "values": [
+      42.42,
+      19.02,
+      19.97,
+      1.58
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": "2026-04-30T00:00:00.000Z",
+  "duration_days": 12,
+  "remarks": "Report pill: Scale Test · Report months: April",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 83,
+  "test_id": "TEST-083",
+  "title": "Featured category — intent-driven title copy",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile",
+   "Web-Desk"
+  ],
+  "pages": [],
+  "hypothesis": "A title that expresses the category's intent and value should increase CTR on this section.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ↻ Extend"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✓ Ship C"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control value",
+    "A — Find Your Study Materials",
+    "B — Shop by Education Level",
+    "C — জনপ্রিয় একাডেমিক ক্যাটাগরি ★"
+   ],
+   "exposures": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      2799.0,
+      2586.0,
+      2577.0,
+      2808.0
+     ]
+    },
+    {
+     "name": "CTR (experiment_clicked)",
+     "kind": "value",
+     "values": [
+      3.07,
+      13.4,
+      16.6,
+      14.84
+     ]
+    },
+    {
+     "name": "view_item rate",
+     "kind": "value",
+     "values": [
+      2.11,
+      6.98,
+      8.6,
+      7.08
+     ]
+    },
+    {
+     "name": "ATC rate",
+     "kind": "value",
+     "values": [
+      1.14,
+      2.38,
+      3.59,
+      2.88
+     ]
+    },
+    {
+     "name": "Purchase rate (Goal)",
+     "kind": "value",
+     "values": [
+      0.18,
+      1.06,
+      0.71,
+      1.1
+     ]
+    },
+    {
+     "name": "Net revenue impact / month",
+     "kind": "value",
+     "values": [
+      977.27,
+      35182.0,
+      null,
+      null
+     ]
+    }
+   ],
+   "notes": "[April] Results are not statistically significant yet. Control and Variant C are trending very close to each other; the experiment needs to run longer to identify a clear winner.\n[May] All three rewritten titles massively out-perform the control on engagement — CTR jumps from 3.1% to 16–20% and view-item from 2.1% to ~9–11%. An intent-driven, descriptive title clearly makes the section far more clickable. | Purchase counts are still tiny (5 → 36), so the bottom-funnel lift is directional only. Variant C (কার্টের একাডেমিক ক্যাটাগরি) leads on purchase rate (1.28%); roll it out and keep running to reach significance on purchases."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": 26,
+  "remarks": "Report pill: ✓ Ship C · Report months: April+May · April status: ↻ Extend",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 84,
+  "test_id": "TEST-084",
+  "title": "Price-Layout-Simplification-Mobile-Product-Card",
+  "status": "Live",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "Simplifying the price layout on mobile product cards to reduce cognitive load and highlight the final price.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ↻ Extend"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "AA",
+    "AB",
+    "AC",
+    "BA",
+    "BB",
+    "BC"
+   ],
+   "exposures": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Tests Viewed",
+     "kind": "count",
+     "values": [
+      51.0,
+      51.0,
+      43.0,
+      51.0,
+      51.0,
+      67.0,
+      59.0
+     ]
+    },
+    {
+     "name": "Product View",
+     "kind": "value",
+     "values": [
+      74.51,
+      9.8,
+      11.72,
+      55.88,
+      5.88,
+      3.1,
+      6.71
+     ]
+    },
+    {
+     "name": "ATC Rate",
+     "kind": "value",
+     "values": [
+      19.61,
+      1.96,
+      10.31,
+      7.85,
+      5.88,
+      3.19,
+      9.2
+     ]
+    },
+    {
+     "name": "Purchase Rate",
+     "kind": "value",
+     "values": [
+      9.8,
+      3.92,
+      5.15,
+      3.92,
+      5.88,
+      6.81,
+      0.37
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": 5,
+  "remarks": "Report pill: ↻ Extend · Report months: April",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 85,
+  "test_id": "TEST-085",
+  "title": "Web Desktop Confirm Order btn Placement change",
+  "status": "Live",
+  "platform": [
+   "Web-Desk"
+  ],
+  "pages": [],
+  "hypothesis": "Fixing the confirm order button placement above/below the checkout summary to resolve fold-visibility issues for new users. It is also more consistent with our checkout-summary section in the cart page.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ↻ Extend"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "A",
+    "B"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Tests Viewed",
+     "kind": "count",
+     "values": [
+      198.0,
+      198.0,
+      188.0
+     ]
+    },
+    {
+     "name": "Click Rate",
+     "kind": "value",
+     "values": [
+      73.23,
+      6.06,
+      7.62
+     ]
+    },
+    {
+     "name": "Purchase Rate",
+     "kind": "value",
+     "values": [
+      66.67,
+      4.04,
+      6.73
+     ]
+    },
+    {
+     "name": "Net revenue generated / month",
+     "kind": "value",
+     "values": [
+      1065.96,
+      null,
+      179081.28
+     ]
+    }
+   ],
+   "notes": "[April] Even though the results are looking favorable for Variant B, the metrics have not reached statistical significance yet. The experiment needs to run for a longer period to confirm the lift."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": 4,
+  "remarks": "Report pill: ↻ Extend · Report months: April",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 86,
+  "test_id": "TEST-086",
+  "title": "%OFF font scaling exp",
+  "status": "Live",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "Increasing the font size of the percentage discount text (14px to 16px/18px) to make it more prominent and drive ATC rates on mobile.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ↻ Extend"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Tests Viewed",
+     "kind": "count",
+     "values": [
+      395.0,
+      381.0,
+      394.0
+     ]
+    },
+    {
+     "name": "ATC Rate",
+     "kind": "value",
+     "values": [
+      23.8,
+      0.08,
+      5.48
+     ]
+    },
+    {
+     "name": "Purchase Rate",
+     "kind": "value",
+     "values": [
+      3.8,
+      0.14,
+      0.53
+     ]
+    },
+    {
+     "name": "Net revenue generated / month",
+     "kind": "value",
+     "values": [
+      1065.96,
+      0.0,
+      9945.33
+     ]
+    }
+   ],
+   "notes": "[April] Even though the results are looking favorable for Variant B in terms of purchase rate, the metrics have not reached statistical significance yet. The experiment needs to run for a longer period to confirm the lift."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": 6,
+  "remarks": "Report pill: ↻ Extend · Report months: April",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 87,
+  "test_id": "TEST-087",
+  "title": "Checkout — Order Summary Dropdown & Redesign",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [],
+  "hypothesis": "A previous test revealed that a highly visible order summary can induce purchase fear, increasing drop-off by 2%. This iteration hides the summary in an expandable dropdown, changes its placement, and separates the payment total/order summary button from the payment methods to reduce friction.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: Code Review"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✓ Ship A"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control value",
+    "A — Dropdown Bottom ★",
+    "B — Separated",
+    "C — Dropdown Top"
+   ],
+   "exposures": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      1585.0,
+      1721.0,
+      1480.0,
+      1493.0
+     ]
+    },
+    {
+     "name": "Purchase rate (Goal)",
+     "kind": "value",
+     "values": [
+      67.19,
+      1.43,
+      0.37,
+      1.8
+     ]
+    },
+    {
+     "name": "Net revenue impact / month",
+     "kind": "value",
+     "values": [
+      977.27,
+      167890.0,
+      null,
+      null
+     ]
+    }
+   ],
+   "notes": "[May] Variant A (Dropdown Bottom) is the winner with a +1.4pp purchase-rate lift (68.6% vs 67.2%), projecting to ৳1,67,890/month on this high-traffic checkout. Variant C (Dropdown Top) showed a higher raw lift (+1.8pp) but Variant A is the selected ship based on overall test evaluation. | Traffic split is now balanced across arms (1,480–1,721 each), so the earlier SRM concern is resolved. Variants B and C are slightly under-allocated vs A — keep monitoring the split as the test continues. | 3-day runtime is below the 7-day minimum. Extend the run to a full week to confirm Variant C's lift before shipping."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": 4,
+  "remarks": "Report pill: ✓ Ship A · Report months: April+May · April status: Code Review",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 88,
+  "test_id": "TEST-088",
+  "title": "Login — Improve OTP Option Visibility",
+  "status": "Merge",
+  "platform": [],
+  "pages": [
+   "Login"
+  ],
+  "hypothesis": "Users increasingly prefer logging in via phone number and OTP over email/password. Currently, the OTP option requires an extra step. Exposing the OTP option immediately and updating placeholders to prioritize phone numbers will increase the login conversion rate.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: QA Testing"
+   },
+   {
+    "stage": "Merge",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: Not live"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: Not live · Report months: April+May · April status: QA Testing",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 89,
+  "test_id": "TEST-089",
+  "title": "Cart — Pop-up Login Modal",
+  "status": "Merge",
+  "platform": [],
+  "pages": [
+   "Cart"
+  ],
+  "hypothesis": "~70% of users browse without logging in. The current redirect to a separate login page creates a context switch and friction that increases cart drop-off. Keeping users in-context with a login modal on the cart page will prevent this redirect.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ● Blocked"
+   },
+   {
+    "stage": "Merge",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: Not live"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: Not live · Report months: April+May · Report label: TEST-041 · April status: ● Blocked",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 90,
+  "test_id": "TEST-090",
+  "title": "Quick Deals — Urgency and Scarcity Labels",
+  "status": "Implementation",
+  "platform": [],
+  "pages": [
+   "Home"
+  ],
+  "hypothesis": "Quick Deal lists show urgency bars and stock availability, but lack strong scarcity warnings. Adding explicit scarcity labels will increase click-through rates and purchase intent for Quick Deal items.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: ● Re-implement"
+   },
+   {
+    "stage": "Implementation",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ● Re-implement"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: ● Re-implement · Report months: April+May · Report label: TEST-038 · April status: ● Re-implement",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 91,
+  "test_id": "TEST-091",
+  "title": "Cart — Quick Deal Stock Remaining",
+  "status": "Merge",
+  "platform": [],
+  "pages": [
+   "Cart"
+  ],
+  "hypothesis": "Cart pages currently do not show the remaining stock for Quick Deal items. Displaying the stock left amount within the cart will create urgency and increase the cart completion rate for these limited-time products.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: Pending"
+   },
+   {
+    "stage": "Merge",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: Not live"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: Not live · Report months: April+May · April status: Pending",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 92,
+  "test_id": "TEST-092",
+  "title": "PDP — Quick Deal Stock Remaining",
+  "status": "Merge",
+  "platform": [],
+  "pages": [
+   "PDP"
+  ],
+  "hypothesis": "Currently, Product Detail Pages for items in a Quick Deal do not show the remaining stock status. Adding this visual indicator will induce scarcity and urgency, encouraging users to complete their purchase faster.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Live",
+    "entered_at": "2026-04-30T00:00:00.000Z",
+    "note": "April: Pending"
+   },
+   {
+    "stage": "Merge",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: Not live"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "[April] Investigated and submitted a detailed report regarding the login redirection malfunction originating from the cart page. View Report ↗ | Improved and optimized the server-side implementation of GrowthBook for more robust and reliable A/B test delivery, and a more maintainable code base. | Submitted comprehensive requirements for implementing embedded surveys to collect real, actionable user feedback directly within the platform. View Requirements ↗ | Collaborated with the SE and SQA team to utilize GrowthBook for safe, phased feature rollouts. Case Study: My Orders & Order Track Redesign We are currently using GrowthBook to cautiously roll out the redesigned my-orders and order-track flow to our OG users first. We will collect brief feedback on their experience, and if positive, expand the rollout to the rest of the user base. This approach significantly mitigates risk and ensures a smooth UX transition. If any major bug arises we are also able to turn-off the feature without requiring a revert and re-deployment from the dev-ops team. This in potential can reduce risk and potential points of stress for our SQA and dev-ops team. | Simply surfacing the extra-discount page in the main nav drove ×3.7 views and ৳80,269/month in incremental revenue — with no product changes. There are almost certainly other high-value, low-visibility pages that would respond the same way. Recommend a nav audit in May. | Fixing the \"Confirm Order\" button placement above the checkout summary (Exp 11) drove a +6.73% absolute purchase rate lift. Essential actions must never be buried below the fold, especially for new users without saved shipping data. | The Bangla \"কার্টে যান\" label drove +14.4% view-cart rate vs. +12.8% for English — a meaningful gap for a primarily Bengali-speaking audience. This pattern should be tested systematically across search, wishlist, and checkout CTAs in May. | The featured category title test (Variant C: +4.9% CTR) outperformed all design-only tests this month. Messaging that communicates clear value intent drives stronger engagement than visual styling alone. Prioritise copy testing in H2. | Scaling the \"%OFF\" discount font (Exp 12) drove a minor +0.53% purchase rate lift, while structural changes like CTA placement drove 10x that impact. We should balance fine-tuning UI details with high-leverage structural tests. | Multiple experiments ran for only 1–6 days — insufficient to achieve statistical significance or capture weekly traffic patterns. Going forward, all tests should have a minimum 7-day runtime, with a pre-set sample size calculation from GrowthBook before launch."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: Not live · Report months: April+May · April status: Pending",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-04-30T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 93,
+  "test_id": "TEST-093",
+  "title": "Express buy-now vs. regular checkout",
+  "status": "Monitoring",
+  "platform": [],
+  "pages": [
+   "All users",
+   "1.07M visitors",
+   "Funnel analysis"
+  ],
+  "hypothesis": "Two parallel paths to purchase from the same visitor base. Buy-now leads on intent capture; its lower completion is expected, since many users tap it to preview their total cost.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Monitoring",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✓ Performing"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Buy-now path",
+    "Regular checkout"
+   ],
+   "exposures": [
+    1068552.0,
+    1068552.0
+   ],
+   "metrics": [
+    {
+     "name": "Checkout Flow (buy_now / default)",
+     "kind": "count",
+     "values": [
+      32609.0,
+      20038.0
+     ]
+    },
+    {
+     "name": "Purchases (% of visitors)",
+     "kind": "count",
+     "values": [
+      7241.0,
+      8020.0
+     ]
+    }
+   ],
+   "notes": "[May] Buy-now captures more intent. 32,609 users click it — 3.05% of visitors, 1.6× the 20,038 who enter regular checkout. The express CTA clearly pulls people in. | Lower completion is expected, not lost intent. Many users tap buy-now to preview their total cost (with delivery) before deciding — so a good share of the 22.2% completion reflects price discovery. Even so, buy-now nets ~90% of regular checkout's purchases (7,241 vs 8,020) while serving that need. | Refinement: surface total cost earlier. Showing delivery + final price on the product/cart — before buy-now — means price-checkers don't need to enter the flow just to see it, converting more of those clicks into completed orders without hurting the preview use."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: ✓ Performing · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 94,
+  "test_id": "TEST-094",
+  "title": "You Saving Nudge — Cart & Checkout",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "Cart",
+   "Checkout"
+  ],
+  "hypothesis": "Adding a \"You're saving ৳X\" message on cart and checkout reinforces perceived value and reduces abandonment before purchase.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Winner",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✓ Ship English"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "English",
+    "Bangla"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      9894.0,
+      9666.0,
+      9607.0
+     ]
+    },
+    {
+     "name": "Checkout rate",
+     "kind": "value",
+     "values": [
+      41.33,
+      2.1,
+      0.94
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      21.05,
+      0.13,
+      0.09
+     ]
+    },
+    {
+     "name": "Net revenue impact / month",
+     "kind": "value",
+     "values": [
+      977.27,
+      76227.0,
+      null
+     ]
+    }
+   ],
+   "notes": "[May] V1 improves checkout rate by +2.1pp on solid traffic (~9.7K/arm) — the savings nudge clearly motivates users to proceed to checkout. Purchase rate lift is marginal (+0.1pp); the gain leaks between checkout and purchase, so it needs more data to confirm bottom-funnel impact. | V2 shows no meaningful advantage over V1. V1 is the more promising arm; consider stopping V2 to consolidate traffic on V1 for faster significance."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": 5,
+  "remarks": "Report pill: ✓ Ship English · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 95,
+  "test_id": "TEST-095",
+  "title": "Mobile Cart — Original Price Swap",
+  "status": "Completed",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "Cart"
+  ],
+  "hypothesis": "On the mobile cart, swapping the position of original and discounted price makes savings more prominent and increases checkout motivation.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Inconclusive",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ↻ Iterate"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      2601.0,
+      2382.0
+     ]
+    },
+    {
+     "name": "Checkout rate",
+     "kind": "value",
+     "values": [
+      39.98,
+      0.02
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      16.19,
+      0.44
+     ]
+    }
+   ],
+   "notes": "[May] Checkout rate is flat (40.0% both arms) but purchase rate edges up +0.4pp (16.2% → 16.6%) on healthy traffic (~2.5K/arm). A small, directionally positive bottom-funnel signal. | The +0.4pp purchase lift is well within noise at this sample size and not yet significant. Keep running to confirm before scaling the mobile cart price swap."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ↻ Iterate · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 96,
+  "test_id": "TEST-096",
+  "title": "Gift Wrap — Redesign",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "Checkout"
+  ],
+  "hypothesis": "Redesigning the gift wrap selection UI to be more visually prominent and easier to interact with, increasing gift wrap add-on rate and overall purchase confidence.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Inconclusive",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ↻ Iterate"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Gift-wrap orders",
+     "kind": "value",
+     "values": [
+      142.0,
+      2.1
+     ]
+    }
+   ],
+   "notes": "[May] Gift-wrap orders trend slowly — only ~140 orders per arm in the current window. The +2.1% lift (142 → 145) is directionally positive but well within normal variance at this volume. No meaningful call can be made yet. | Keep running until each arm reaches ~500+ gift-wrap orders. Given the current rate, this will require a longer observation window — likely spanning into peak gifting periods for a reliable signal."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ↻ Iterate · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 97,
+  "test_id": "TEST-097",
+  "title": "Recently Sold Superstore Products — Title Update",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "Homepage"
+  ],
+  "hypothesis": "Testing alternate title copy for the \"Recently Sold\" superstore section to improve click-through rate to individual product pages.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Inconclusive",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ↻ Iterate"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "English",
+    "Bangla"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      497.0,
+      528.0,
+      470.0
+     ]
+    },
+    {
+     "name": "Product-viewed rate",
+     "kind": "value",
+     "values": [
+      48.49,
+      3.78,
+      0.23
+     ]
+    },
+    {
+     "name": "ATC rate (of exposed)",
+     "kind": "value",
+     "values": [
+      17.71,
+      0.28,
+      2.93
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      5.23,
+      1.82,
+      0.76
+     ]
+    }
+   ],
+   "notes": "[May] Low traffic (~470–530/arm). Results are not statistically significant — directional only. | English lifts product click-through (+3.8pp) and Bangla lifts ATC (+2.9pp), but both drop end-purchase rate (−1.8pp / −0.8pp). The title change moves users into the funnel but doesn't convert — keep running before concluding. | Granular view — Mobile-only segment On the mobile-view segment (~190/arm, 7-day run) both variants win on purchase while the combined results above show losses. Bangla leads on every metric — worth shipping mobile-only or re-running at scale. Metric Control English Bangla Participants ~190 ~190 ~190 Product-viewed rate 48.5% + 0.0% + 2.1% ATC rate (of exposed) 16.7% + 0.0% + 7.4% (24.1%) Purchase rate (of exposed) 4.0% + 1.6% (5.6%) + 3.6% (7.6%) Bangla wins on mobile across all funnel stages — consider mobile-only ship or scaled re-run"
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": 7,
+  "remarks": "Report pill: ↻ Iterate · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 98,
+  "test_id": "TEST-098",
+  "title": "Bangla Product Stock Status",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "PDP"
+  ],
+  "hypothesis": "Displaying stock status text in Bangla on the PDP improves readability for local users and increases purchase confidence.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Loser",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✗ Lost"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      3715.0,
+      3654.0
+     ]
+    },
+    {
+     "name": "Product-viewed rate",
+     "kind": "value",
+     "values": [
+      66.08,
+      0.64
+     ]
+    },
+    {
+     "name": "ATC rate (of exposed)",
+     "kind": "value",
+     "values": [
+      21.18,
+      0.22
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      7.27,
+      1.03
+     ]
+    }
+   ],
+   "notes": "[May] Variant slightly improves product click-through (+0.6pp) but shows a clear drop in purchase rate (−1.0pp) on solid traffic (~3.7K/arm). Bangla stock copy isn't converting — lean toward control unless a revised treatment is tested."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ✗ Lost · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 99,
+  "test_id": "TEST-099",
+  "title": "Original Price Swap",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "PDP"
+  ],
+  "hypothesis": "Swapping the prominence of original vs discounted price to make savings more visually apparent, increasing purchase intent.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Loser",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✗ Lost"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      2717.0,
+      2737.0
+     ]
+    },
+    {
+     "name": "Book-viewed rate",
+     "kind": "value",
+     "values": [
+      56.02,
+      0.08
+     ]
+    },
+    {
+     "name": "ATC rate (of exposed)",
+     "kind": "value",
+     "values": [
+      18.11,
+      0.71
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      6.18,
+      0.74
+     ]
+    }
+   ],
+   "notes": "[May] ATC improves (+0.7pp) while book-viewed is flat, but purchase rate drops −0.7pp. The price swap nudges add-to-cart without lifting purchases — possible friction further down funnel. Continue running for significance."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ✗ Lost · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 100,
+  "test_id": "TEST-100",
+  "title": "Boimela Section",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "Homepage"
+  ],
+  "hypothesis": "A dedicated Boimela (book fair) section on the homepage captures seasonal purchase intent and drives engagement with curated titles.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Inconclusive",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ↻ Iterate"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      1104.0,
+      1104.0
+     ]
+    },
+    {
+     "name": "Book-viewed rate",
+     "kind": "value",
+     "values": [
+      59.78,
+      0.82
+     ]
+    },
+    {
+     "name": "ATC rate (of exposed)",
+     "kind": "value",
+     "values": [
+      19.75,
+      0.09
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      5.8,
+      0.91
+     ]
+    }
+   ],
+   "notes": "[May] Seasonal test — results may be skewed by timing relative to the book fair period. Book click-through is marginally better (+0.8pp) but purchase rate dips −0.9pp. Evaluate after the fair window closes."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ↻ Iterate · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 101,
+  "test_id": "TEST-101",
+  "title": "Quantity Left — Bangla Text",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "PDP"
+  ],
+  "hypothesis": "Showing \"X টি বাকি\" (X items left) in Bangla creates urgency in the user's native language, increasing purchase rate from the product page.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Loser",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ✗ Lost"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant A"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      15024.0,
+      15226.0
+     ]
+    },
+    {
+     "name": "Checkout rate",
+     "kind": "value",
+     "values": [
+      42.43,
+      0.72
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      21.11,
+      0.28
+     ]
+    }
+   ],
+   "notes": "[May] Both checkout (−0.7pp) and purchase (−0.3pp) trend slightly negative on large, balanced traffic (~15K/arm). Urgency copy in Bangla may feel unfamiliar or untrustworthy here. Consider testing a revised Bangla phrasing or different placement before concluding."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ✗ Lost · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 102,
+  "test_id": "TEST-102",
+  "title": "View All Button — Bangla Text",
+  "status": "Completed",
+  "platform": [],
+  "pages": [
+   "Homepage"
+  ],
+  "hypothesis": "Changing \"View All\" button text to Bangla (\"সব দেখুন\") improves resonance with local users and increases section engagement and downstream purchases.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "Inconclusive",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Completed",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: ↻ Iterate"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant 1",
+    "Variant 2"
+   ],
+   "exposures": [
+    null,
+    null,
+    null
+   ],
+   "metrics": [
+    {
+     "name": "Participants",
+     "kind": "count",
+     "values": [
+      1825.0,
+      1787.0,
+      1841.0
+     ]
+    },
+    {
+     "name": "Book-viewed rate",
+     "kind": "value",
+     "values": [
+      56.05,
+      0.71,
+      0.44
+     ]
+    },
+    {
+     "name": "ATC rate (of exposed)",
+     "kind": "value",
+     "values": [
+      18.41,
+      0.22,
+      0.38
+     ]
+    },
+    {
+     "name": "Purchase rate (of exposed)",
+     "kind": "value",
+     "values": [
+      5.86,
+      0.07,
+      0.21
+     ]
+    }
+   ],
+   "notes": "[May] Neither variant moves purchase rate: V1 is flat (+0.1pp) and V2 dips (−0.2pp) vs a 5.9% control. The Bangla \"View All\" copy is essentially neutral on conversion across ~1.8K/arm. | V2 edges control on book-viewed (+0.4pp) and ATC (+0.4pp) but loses it back at purchase. No variant is worth shipping on current data — close as neutral or retest with a stronger treatment."
+  },
+  "start_date": null,
+  "end_date": "2026-05-31T00:00:00.000Z",
+  "duration_days": null,
+  "remarks": "Report pill: ↻ Iterate · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 103,
+  "test_id": "TEST-103",
+  "title": "Mobile — Quick Deal Urgency Badge",
+  "status": "SQA",
+  "platform": [
+   "Web-Mobile"
+  ],
+  "pages": [
+   "Quick Deals"
+  ],
+  "hypothesis": "The quick-deal urgency and scarcity label test (TEST-038) was designed for desktop product cards. Mobile product cards have a different layout and smaller footprint. Adapting the badge design specifically for mobile will ensure the scarcity signal is visible and effective, increasing quick-deal conversion on mobile.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "SQA",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: QA Testing"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: QA Testing · Report months: May · Report label: TEST-054",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 104,
+  "test_id": "TEST-104",
+  "title": "Related Products — Quick Deal API Priority",
+  "status": "SQA",
+  "platform": [],
+  "pages": [
+   "PDP",
+   "Quick Deals",
+   "Algorithm"
+  ],
+  "hypothesis": "The 'Related Products' section on PDP currently ranks items by generic similarity. Boosting quick-deal products to the top of the recommendations list will surface high-urgency, discounted items to users already in a buying context, increasing click-through to quick-deal PDPs and overall quick-deal conversion.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "SQA",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: QA Testing"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: QA Testing · Report months: May · Report label: TEST-055",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 105,
+  "test_id": "TEST-105",
+  "title": "Product Card — Stock Urgency Indicator",
+  "status": "SQA",
+  "platform": [],
+  "pages": [
+   "PLP",
+   "Product Card"
+  ],
+  "hypothesis": "Product cards across PLP and search results currently show no stock-level information. Adding a 'Only X left' or 'Low stock' label on product cards for items with critically low inventory will create scarcity cues at the browse stage, increasing both ATC rate and purchase urgency before users even reach the PDP.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "SQA",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: QA Testing"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: QA Testing · Report months: May · Report label: TEST-056",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 106,
+  "test_id": "TEST-106",
+  "title": "Checkout — Streamlined Payment Section Copy",
+  "status": "SQA",
+  "platform": [],
+  "pages": [
+   "Checkout",
+   "Payment"
+  ],
+  "hypothesis": "The checkout payment section contains redundant labels, verbose method descriptions, and repeated text that increases cognitive load. Reducing the copy to the minimum needed — short method names, no redundant sub-labels — will lower decision friction and improve payment step completion rate.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "SQA",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: QA Testing"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": ""
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: QA Testing · Report months: May · Report label: TEST-057",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ },
+ {
+  "id": 107,
+  "test_id": "TEST-107",
+  "title": "Cart — Trust Badges Above Checkout CTA",
+  "status": "Merge",
+  "platform": [],
+  "pages": [
+   "Cart"
+  ],
+  "hypothesis": "The cart page jumps straight to the \"Continue to Checkout\" CTA with no reassurance at the moment of decision. Adding a row of trust badges — \"100% Original Product\", \"7-Day Happy Return\", and \"Buy & Earn Points\" — directly above the CTA should reduce purchase anxiety and lift checkout click-through.",
+  "problem_statement": "",
+  "metrics": {
+   "primary": "",
+   "secondary": [],
+   "guardrail": []
+  },
+  "result": "In Progress",
+  "ice_score": null,
+  "sprint": null,
+  "revenue_impact": null,
+  "creator": "syed.nafis.sadique@gmail.com",
+  "stage_history": [
+   {
+    "stage": "Idea",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "imported from report"
+   },
+   {
+    "stage": "Merge",
+    "entered_at": "2026-05-31T00:00:00.000Z",
+    "note": "May: Not live"
+   }
+  ],
+  "results": {
+   "exposure_event": "",
+   "variants": [
+    "Control",
+    "Variant B"
+   ],
+   "exposures": [
+    null,
+    null
+   ],
+   "metrics": [],
+   "notes": "[May] Pulled and analysed order data segmented by SEO traffic source for May. Identified top-converting organic search entry points and flagged underperforming landing pages for CRO prioritisation. | Compiled a device-type breakdown report across sessions, add-to-cart, and purchase events. Findings used to prioritise mobile-first test design and flag desktop-specific friction points. | Analysed conversion rates across publisher landing pages — view-to-ATC and ATC-to-purchase funnels by publisher. Surfaced low-converting publishers with high traffic as prime targets for page-level CRO tests. | Planned the integration of Formbricks for in-product survey delivery. Completed initial testing of survey triggers, response collection, and data pipeline into the analytics stack. Groundwork for qualitative user research at scale. | Integrated GrowthBook's Visual Editor into the platform, enabling no-code experiment creation directly on live pages. Reduces reliance on developer time for front-end A/B test setup and expands the team's ability to run tests independently. | The Order Summary dropdown redesign (Test 3, Variant C) lifted purchase rate 67.2% → 68.6% on high-intent checkout traffic and projects to ৳1,67,890/month — the single largest win of the month. Optimising the bottom of the funnel, where users already intend to buy, returned more per visitor than any top-of-funnel acquisition tweak. Prioritise checkout and cart surfaces. | The Superstore title test was flat-to-negative on the full funnel (Bangla −0.7pp purchase) yet won decisively on mobile alone — Bangla +3.6pp purchase (7.6% vs 4.0%) and +7.4pp ATC. A single pooled number completely masked opposite behaviour across devices. Device-segmented analysis must become standard before every ship decision — this is the strongest signal of the month. | English won the cart ATC-interaction test (+7.2pp purchase, 12.3% → 19.5%) while Bangla won on the Superstore mobile segment. There is no fixed \"best language\" — it shifts by surface and by device. Bangla vs English should be A/B'd per placement rather than decided once and rolled out everywhere. | The featured-category title test (Variant C) lifted click-through from 3.1% → 17.9% — a ×5.8 jump — with no design change at all. Copy that signals clear value intent outperformed every design-only test this month and ships fast. Build a copy-testing backlog for high-traffic entry points. | Several experiments ran at ~1–2K participants/arm with too few purchases to reach statistical significance (Superstore, Boimela, Original-swap) — their lifts are directional, not confirmed. Validate promising winners by scaling them onto high-traffic surfaces before treating the revenue as banked. | Our biggest win (Order Summary, 4 days) reached volume fast because checkout traffic is dense, but shorter windows miss weekly cycles on lower-traffic surfaces. Hold low-traffic tests to a ≥7-day window with a pre-set GrowthBook sample-size target, and confirm short high-traffic wins over a full week before a 100% rollout. | This month's device split proved that audience cohorts respond in opposite directions to the same change. The same is almost certainly true geographically — Bangladesh's major cities (Dhaka, Chattogram, Sylhet, Khulna) differ in delivery speed, COD-vs-online payment mix and price sensitivity, none of which we have tested yet. June's roadmap formally adds device-type and city-level experiment cohorts to capture these differences and stop averaging away real wins."
+  },
+  "start_date": null,
+  "end_date": null,
+  "duration_days": null,
+  "remarks": "Report pill: Not live · Report months: May",
+  "growthbook_id": "",
+  "amaly_task_id": "",
+  "source": "self",
+  "promoted_from_idea_id": null,
+  "created_at": "2026-05-31T00:00:00.000Z",
+  "potential_outcome": ""
+ }
+]

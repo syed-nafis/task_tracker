@@ -1,18 +1,17 @@
 import { NextRequest } from 'next/server';
-import { getTasks, saveTasks, nextId } from '@/lib/db';
+import { getTasks, insertTask, updateTask, deleteTask, nextId } from '@/lib/data';
 import type { Task } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  return Response.json(getTasks());
+  return Response.json(await getTasks());
 }
 
 export async function POST(req: NextRequest) {
   const body = await req.json() as Partial<Task>;
-  const tasks = getTasks();
   const newTask: Task = {
-    id: nextId(tasks),
+    id: await nextId('tasks'),
     title: body.title ?? 'Untitled Task',
     type: body.type ?? 'General',
     status: body.status ?? 'Active',
@@ -23,30 +22,29 @@ export async function POST(req: NextRequest) {
     created_at: body.created_at ?? new Date().toISOString(),
     completed_at: body.completed_at ?? null,
   };
-  tasks.push(newTask);
-  saveTasks(tasks);
+  await insertTask(newTask);
   return Response.json(newTask, { status: 201 });
 }
 
 export async function PUT(req: NextRequest) {
   const body = await req.json() as Task;
-  const tasks = getTasks();
-  const idx = tasks.findIndex((t) => t.id === body.id);
-  if (idx === -1) return Response.json({ error: 'Not found' }, { status: 404 });
-  
-  if (body.status === 'Completed' && tasks[idx].status !== 'Completed') {
+  const tasks = await getTasks();
+  const existing = tasks.find((t) => t.id === body.id);
+  if (!existing) return Response.json({ error: 'Not found' }, { status: 404 });
+
+  if (body.status === 'Completed' && existing.status !== 'Completed') {
     body.completed_at = new Date().toISOString();
   } else if (body.status !== 'Completed') {
     body.completed_at = null;
   }
 
-  tasks[idx] = { ...tasks[idx], ...body };
-  saveTasks(tasks);
-  return Response.json(tasks[idx]);
+  const updated: Task = { ...existing, ...body };
+  await updateTask(body.id, updated);
+  return Response.json(updated);
 }
 
 export async function DELETE(req: NextRequest) {
   const { id } = await req.json() as { id: number };
-  saveTasks(getTasks().filter((t) => t.id !== id));
+  await deleteTask(id);
   return Response.json({ ok: true });
 }

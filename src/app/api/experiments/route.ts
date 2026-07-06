@@ -1,22 +1,27 @@
 import { NextRequest } from 'next/server';
-import { getExperiments, saveExperiments, nextId, getPages, savePages } from '@/lib/db';
+import {
+  getExperiments, getExperiment, insertExperiment, updateExperiment,
+  deleteExperiment, nextId, addPages,
+} from '@/lib/data';
+import { emptyResults } from '@/lib/types';
 import type { Experiment } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  return Response.json(getExperiments());
+  return Response.json(await getExperiments());
 }
 
 export async function POST(req: NextRequest) {
   const body = await req.json() as Partial<Experiment>;
-  const experiments = getExperiments();
   const now = new Date().toISOString();
+  const id = await nextId('experiments');
+  const status = body.status ?? 'Idea';
   const newExp: Experiment = {
-    id: nextId(experiments),
-    test_id: `EXP-${String(nextId(experiments)).padStart(3, '0')}`,
+    id,
+    test_id: `EXP-${String(id).padStart(3, '0')}`,
     title: body.title ?? 'Untitled Experiment',
-    status: body.status ?? 'Idea',
+    status,
     platform: body.platform ?? [],
     pages: body.pages ?? [],
     hypothesis: body.hypothesis ?? '',
@@ -25,8 +30,8 @@ export async function POST(req: NextRequest) {
     result: body.result ?? 'In Progress',
     revenue_impact: body.revenue_impact ?? null,
     creator: body.creator ?? '',
-    baseline_data: body.baseline_data ?? '',
-    current_data: body.current_data ?? '',
+    stage_history: body.stage_history ?? [{ stage: status, entered_at: now, note: '' }],
+    results: body.results ?? emptyResults(),
     start_date: body.start_date ?? null,
     end_date: body.end_date ?? null,
     duration_days: body.duration_days ?? null,
@@ -37,34 +42,34 @@ export async function POST(req: NextRequest) {
     promoted_from_idea_id: body.promoted_from_idea_id ?? null,
     created_at: now,
   };
-  // auto-register pages
-  if (newExp.pages.length > 0) {
-    const pages = getPages();
-    const merged = Array.from(new Set([...pages, ...newExp.pages]));
-    savePages(merged);
-  }
-  experiments.push(newExp);
-  saveExperiments(experiments);
+  await addPages(newExp.pages);
+  await insertExperiment(newExp);
   return Response.json(newExp, { status: 201 });
 }
 
 export async function PUT(req: NextRequest) {
   const body = await req.json() as Experiment;
-  const experiments = getExperiments();
-  const idx = experiments.findIndex((e) => e.id === body.id);
-  if (idx === -1) return Response.json({ error: 'Not found' }, { status: 404 });
-  experiments[idx] = { ...experiments[idx], ...body };
-  if (body.pages?.length > 0) {
-    const pages = getPages();
-    savePages(Array.from(new Set([...pages, ...body.pages])));
+  const existing = await getExperiment(body.id);
+  if (!existing) return Response.json({ error: 'Not found' }, { status: 404 });
+
+  const updated: Experiment = { ...existing, ...body };
+
+  // Record stage transitions server-side so history can't be lost by clients.
+  if (body.status && body.status !== existing.status) {
+    const history = body.stage_history ?? existing.stage_history ?? [];
+    updated.stage_history = [
+      ...history,
+      { stage: body.status, entered_at: new Date().toISOString(), note: '' },
+    ];
   }
-  saveExperiments(experiments);
-  return Response.json(experiments[idx]);
+
+  if (body.pages && body.pages.length > 0) await addPages(body.pages);
+  await updateExperiment(body.id, updated);
+  return Response.json(updated);
 }
 
 export async function DELETE(req: NextRequest) {
   const { id } = await req.json() as { id: number };
-  const experiments = getExperiments().filter((e) => e.id !== id);
-  saveExperiments(experiments);
+  await deleteExperiment(id);
   return Response.json({ ok: true });
 }
