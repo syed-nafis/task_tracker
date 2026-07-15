@@ -11,15 +11,15 @@ interface Props {
   onStageChange: (exp: Experiment, status: ExperimentStatus) => void;
 }
 
-// Per-phase header tint — bg + text, light/dark aware
-const phaseHeader: Record<string, string> = {
-  'Planning': 'bg-slate-500/10 text-slate-600 dark:text-slate-300',
-  'Setup': 'bg-violet-500/10 text-violet-600 dark:text-violet-300',
-  'Build': 'bg-blue-500/10 text-blue-600 dark:text-blue-300',
-  'QA': 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-300',
-  'Code Review': 'bg-rose-500/10 text-rose-600 dark:text-rose-300',
-  'Live': 'bg-teal-500/10 text-teal-600 dark:text-teal-300',
-  'Done': 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300',
+// Per-phase color grading: accent bar under the header + tint used on drop hover.
+const phaseAccent: Record<string, { bar: string; text: string; tint: string }> = {
+  'Planning':    { bar: 'bg-slate-400',   text: 'text-slate-500 dark:text-slate-300',     tint: 'bg-slate-400/[0.07]' },
+  'Setup':       { bar: 'bg-violet-500',  text: 'text-violet-600 dark:text-violet-300',   tint: 'bg-violet-500/[0.07]' },
+  'Build':       { bar: 'bg-blue-500',    text: 'text-blue-600 dark:text-blue-300',       tint: 'bg-blue-500/[0.07]' },
+  'QA':          { bar: 'bg-cyan-500',    text: 'text-cyan-600 dark:text-cyan-300',       tint: 'bg-cyan-500/[0.07]' },
+  'Code Review': { bar: 'bg-rose-500',    text: 'text-rose-600 dark:text-rose-300',       tint: 'bg-rose-500/[0.07]' },
+  'Live':        { bar: 'bg-teal-500',    text: 'text-teal-600 dark:text-teal-300',       tint: 'bg-teal-500/[0.07]' },
+  'Done':        { bar: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-300', tint: 'bg-emerald-500/[0.07]' },
 };
 
 const resultDot: Record<string, string> = {
@@ -39,26 +39,56 @@ function daysInStage(exp: Experiment, now: number): number | null {
 export function KanbanBoard({ experiments, onOpen, onStageChange }: Props) {
   // Snapshot once per mount — Date.now() during render trips the compiler's purity rule.
   const [now] = useState(() => Date.now());
+  const [draggingId, setDraggingId] = useState<number | null>(null);
+  const [dropPhase, setDropPhase] = useState<string | null>(null);
+
   function move(exp: Experiment, dir: -1 | 1) {
     const idx = PIPELINE_STAGES.indexOf(exp.status);
     const next = PIPELINE_STAGES[idx + dir];
     if (next) onStageChange(exp, next);
   }
 
+  function handleDrop(e: React.DragEvent, stages: ExperimentStatus[]) {
+    e.preventDefault();
+    setDropPhase(null);
+    setDraggingId(null);
+    // dataTransfer is the source of truth — state may be stale or cleared.
+    const id = Number(e.dataTransfer.getData('text/plain'));
+    const exp = experiments.find((x) => x.id === id);
+    if (!exp || stages.includes(exp.status)) return;
+    // Dropping onto a phase lands the card on that phase's first stage.
+    onStageChange(exp, stages[0]);
+  }
+
   return (
-    <div className="grid grid-flow-col auto-cols-[minmax(290px,1fr)] divide-x divide-dotted divide-slate-200 dark:divide-white/10 overflow-x-auto">
+    <div className="flex gap-5 overflow-x-auto pb-4 items-start">
       {PHASES.map((phase) => {
         const cards = experiments.filter((e) => phase.stages.includes(e.status));
+        const accent = phaseAccent[phase.name] ?? phaseAccent['Planning'];
+        const isTarget = dropPhase === phase.name && draggingId != null;
         return (
-          <div key={phase.name} className="flex flex-col min-w-0">
-            {/* Header — color-coded per phase over a dotted rule */}
-            <div className={`flex items-baseline gap-2 px-3 py-2 mx-1.5 mt-1 rounded-md border-b border-dotted border-slate-200 dark:border-white/10 ${phaseHeader[phase.name] ?? 'bg-slate-100 dark:bg-white/[0.04] text-slate-600 dark:text-white/55'}`}>
-              <span className="text-[11px] font-semibold uppercase tracking-wider">{phase.name}</span>
-              <span className="text-[11px] tabular-nums opacity-60">{cards.length}</span>
+          <div
+            key={phase.name}
+            onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; }}
+            onDragEnter={() => setDropPhase(phase.name)}
+            onDragLeave={(e) => {
+              // Only clear when leaving the column itself, not moving between children.
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) setDropPhase(null);
+            }}
+            onDrop={(e) => handleDrop(e, phase.stages)}
+            className={`flex flex-col shrink-0 w-[268px] rounded-xl transition-colors duration-150 ${isTarget ? accent.tint : ''}`}
+          >
+            {/* Header — name + count over a phase-colored accent bar. No borders. */}
+            <div className="px-1 pt-1">
+              <div className="flex items-baseline gap-2 pb-2">
+                <span className={`text-[11px] font-semibold uppercase tracking-[0.08em] ${accent.text}`}>{phase.name}</span>
+                <span className="text-[11px] font-medium tabular-nums text-slate-400 dark:text-white/30">{cards.length}</span>
+              </div>
+              <div className={`h-[3px] rounded-full ${accent.bar} opacity-70`} />
             </div>
 
-            {/* Cards — floating on open surface */}
-            <div className="flex flex-col gap-2 p-2.5 min-h-[100px]">
+            {/* Cards */}
+            <div className="flex flex-col gap-2 px-1 pt-3 pb-1 min-h-[140px]">
               {cards.map((exp) => {
                 const stageIdx = PIPELINE_STAGES.indexOf(exp.status);
                 const days = daysInStage(exp, now);
@@ -66,15 +96,26 @@ export function KanbanBoard({ experiments, onOpen, onStageChange }: Props) {
                 return (
                   <div
                     key={exp.id}
+                    draggable
+                    onDragStart={(e) => {
+                      e.dataTransfer.effectAllowed = 'move';
+                      e.dataTransfer.setData('text/plain', String(exp.id));
+                      // Defer the re-render: mutating the dragged node during
+                      // dragstart makes Chrome cancel the drag.
+                      requestAnimationFrame(() => setDraggingId(exp.id));
+                    }}
+                    onDragEnd={() => { setDraggingId(null); setDropPhase(null); }}
                     onClick={() => onOpen(exp)}
-                    className="group rounded-lg bg-white dark:bg-white/[0.05] shadow-sm shadow-slate-200/80 dark:shadow-black/40 hover:shadow-md dark:hover:bg-white/[0.07] px-2.5 py-2 cursor-pointer transition-all"
+                    className={`group select-none rounded-lg bg-white dark:bg-white/[0.06] px-3 py-2.5 cursor-grab active:cursor-grabbing shadow-[0_1px_3px_rgba(0,0,0,0.07)] dark:shadow-none hover:shadow-[0_3px_10px_rgba(0,0,0,0.10)] dark:hover:bg-white/[0.09] transition-all ${
+                      draggingId === exp.id ? 'opacity-40' : ''
+                    }`}
                   >
                     {/* Title */}
                     <p className="text-[13px] text-slate-800 dark:text-white/90 leading-snug line-clamp-2">{exp.title}</p>
 
                     {/* Stage chip — only when phase has multiple stages */}
                     {phase.stages.length > 1 && (
-                      <span className="inline-block mt-1.5 px-1.5 py-px rounded-sm text-[10px] font-medium bg-slate-100 dark:bg-white/[0.07] text-slate-500 dark:text-white/45">
+                      <span className="inline-block mt-1.5 px-1.5 py-px rounded text-[10px] font-medium bg-slate-100 dark:bg-white/[0.07] text-slate-500 dark:text-white/45">
                         {exp.status}
                       </span>
                     )}
@@ -110,6 +151,13 @@ export function KanbanBoard({ experiments, onOpen, onStageChange }: Props) {
                   </div>
                 );
               })}
+              {cards.length === 0 && (
+                <div className={`py-8 text-center text-[11px] transition-colors ${
+                  isTarget ? `${accent.text} font-medium` : 'text-slate-300 dark:text-white/15'
+                }`}>
+                  {isTarget ? 'Drop here' : 'No tests'}
+                </div>
+              )}
             </div>
           </div>
         );

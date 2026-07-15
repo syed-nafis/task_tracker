@@ -86,15 +86,13 @@ export interface Experiment {
     guardrail: string[];
   };
   result: ExperimentResult;
-  ice_score: number | null;
-  sprint: string | null;
   revenue_impact: string | null;
   creator: string;
   stage_history: StageEntry[];
   results: ExperimentResults;
-  start_date: string | null;
-  end_date: string | null;
-  duration_days: number | null;
+  start_date: string | null; // date-only, YYYY-MM-DD (timestamps live in stage_history)
+  end_date: string | null; // date-only, YYYY-MM-DD
+  duration_days: number | null; // computed server-side from start/end dates
   remarks: string;
   growthbook_id: string;
   amaly_task_id: string;

@@ -20,26 +20,46 @@ export default function Dashboard() {
   const [ideas, setIdeas] = useState<Idea[]>([]);
   const [pages, setPages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [showExpModal, setShowExpModal] = useState(false);
   const [editingExp, setEditingExp] = useState<Experiment | null>(null);
 
+  async function getJson<T>(url: string): Promise<T> {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`${url} → ${r.status}`);
+    return r.json();
+  }
+
   async function fetchAll() {
-    const [exps, tsks, idls, pgs] = await Promise.all([
-      fetch('/api/experiments').then((r) => r.json()),
-      fetch('/api/tasks').then((r) => r.json()),
-      fetch('/api/ideas').then((r) => r.json()),
-      fetch('/api/pages-registry').then((r) => r.json()),
-    ]);
-    setExperiments(exps);
-    setTasks(tsks);
-    setIdeas(idls);
-    setPages(pgs);
+    try {
+      const [exps, tsks, idls, pgs] = await Promise.all([
+        getJson<Experiment[]>('/api/experiments'),
+        getJson<Task[]>('/api/tasks'),
+        getJson<Idea[]>('/api/ideas'),
+        getJson<string[]>('/api/pages-registry'),
+      ]);
+      setExperiments(exps);
+      setTasks(tsks);
+      setIdeas(idls);
+      setPages(pgs);
+      setLoadError(null);
+    } catch (e) {
+      setLoadError(e instanceof Error ? e.message : 'Failed to load data');
+    }
+  }
+
+  /** Surface API rejections (validation, invariants) instead of swallowing them. */
+  async function reportIfError(res: Response) {
+    if (res.ok) return;
+    const body = await res.json().catch(() => null) as { error?: string } | null;
+    alert(body?.error ?? `Request failed (${res.status})`);
   }
 
   // Full-screen loader only on first load; later fetchAll() calls refresh in place.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- all setState happens after await, not synchronously
     fetchAll().finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount; fetchAll is stable per mount
   }, []);
 
   function refresh() {
@@ -49,10 +69,15 @@ export default function Dashboard() {
 
   // --- Experiments ---
   async function saveExperiment(data: Partial<Experiment>) {
+    let res: Response;
     if (editingExp) {
-      await fetch('/api/experiments', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...editingExp, ...data }) });
+      res = await fetch('/api/experiments', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, id: editingExp.id }) });
     } else {
-      await fetch('/api/experiments', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      res = await fetch('/api/experiments', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    }
+    if (!res.ok) {
+      await reportIfError(res);
+      return; // keep the modal open so edits aren't lost
     }
     setShowExpModal(false);
     setEditingExp(null);
@@ -66,9 +91,11 @@ export default function Dashboard() {
 
   async function changeStage(exp: Experiment, status: ExperimentStatus) {
     // Optimistic update so board moves instantly; server appends stage_history.
+    // Send only the delta — a full object would clobber concurrent edits.
     setExperiments((prev) => prev.map((e) => (e.id === exp.id ? { ...e, status } : e)));
-    await fetch('/api/experiments', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...exp, status }) });
-    fetchAll();
+    const res = await fetch('/api/experiments', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: exp.id, status }) });
+    await reportIfError(res); // e.g. moving to Completed without a decision
+    fetchAll(); // re-sync (also reverts the optimistic move on rejection)
   }
 
   // --- Tasks ---
@@ -216,7 +243,15 @@ export default function Dashboard() {
       </div>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-6 py-6">
+      <main className={`${tab === 'board' ? 'max-w-full' : 'max-w-7xl'} mx-auto px-6 py-6`}>
+        {loadError && !loading && (
+          <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-red-300 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-4 py-2.5 text-sm text-red-700 dark:text-red-300">
+            <span>Failed to load data: {loadError}</span>
+            <button onClick={refresh} className="shrink-0 px-2.5 py-1 rounded-md text-xs font-semibold bg-red-600 text-white hover:bg-red-500">
+              Retry
+            </button>
+          </div>
+        )}
         {loading ? (
           <div className="flex items-center justify-center py-32">
             <div className="flex flex-col items-center gap-3 text-slate-400 dark:text-white/30">

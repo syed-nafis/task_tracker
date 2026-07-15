@@ -8,7 +8,15 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const { page } = await req.json() as { page: string };
-  if (page && page.trim()) await addPages([page.trim()]);
+  let page: unknown;
+  try {
+    ({ page } = await req.json() as { page?: unknown });
+  } catch {
+    return Response.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
+  if (typeof page !== 'string' || !page.trim()) {
+    return Response.json({ error: 'page must be a non-empty string' }, { status: 400 });
+  }
+  await addPages([page.trim()]);
   return Response.json(await getPages());
 }

@@ -81,6 +81,12 @@ export function ExperimentModal({ onClose, onSave, initial, allPages, onNewPage 
   function handleSubmit(e?: React.FormEvent) {
     e?.preventDefault();
     if (!form.title?.trim()) { setTab('overview'); return; }
+    // Mirror of the server invariant: Completed requires a decision.
+    if (form.status === 'Completed' && (form.result ?? 'In Progress') === 'In Progress') {
+      setTab('results');
+      alert('Set a decision (Winner / Loser / Inconclusive / Stopped) before marking a test Completed.');
+      return;
+    }
     onSave(form);
   }
 

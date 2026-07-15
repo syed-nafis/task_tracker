@@ -40,27 +40,27 @@ function ExpandedRow({ exp }: { exp: Experiment }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Hypothesis</p>
-          <p className="text-sm text-slate-900 dark:text-white/80 leading-relaxed">{exp.hypothesis || '—'}</p>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Hypothesis</p>
+          <p className="text-sm text-slate-700 dark:text-white/80 leading-relaxed">{exp.hypothesis || '—'}</p>
         </div>
         <div>
-          <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Problem Statement</p>
-          <p className="text-sm text-slate-900 dark:text-white/80 leading-relaxed">{exp.problem_statement || '—'}</p>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Problem Statement</p>
+          <p className="text-sm text-slate-700 dark:text-white/80 leading-relaxed">{exp.problem_statement || '—'}</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Primary Metric</p>
-          <p className="text-sm text-slate-900 dark:text-white/80">{exp.metrics.primary || '—'}</p>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Primary Metric</p>
+          <p className="text-sm text-slate-700 dark:text-white/80">{exp.metrics.primary || '—'}</p>
         </div>
         <div>
-          <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Secondary Metrics</p>
-          <p className="text-sm text-slate-900 dark:text-white/80">{exp.metrics.secondary.join(', ') || '—'}</p>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Secondary Metrics</p>
+          <p className="text-sm text-slate-700 dark:text-white/80">{exp.metrics.secondary.join(', ') || '—'}</p>
         </div>
         <div>
-          <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Guardrail Metrics</p>
-          <p className="text-sm text-slate-900 dark:text-white/80">{exp.metrics.guardrail.join(', ') || '—'}</p>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Guardrail Metrics</p>
+          <p className="text-sm text-slate-700 dark:text-white/80">{exp.metrics.guardrail.join(', ') || '—'}</p>
         </div>
       </div>
 
@@ -115,8 +115,8 @@ function ExpandedRow({ exp }: { exp: Experiment }) {
 
       {exp.remarks && (
         <div>
-          <p className="text-xs text-slate-900 dark:text-white/40 mb-1">Remarks</p>
-          <p className="text-sm text-slate-900 dark:text-white/80">{exp.remarks}</p>
+          <p className="text-xs text-slate-500 dark:text-white/40 mb-1">Remarks</p>
+          <p className="text-sm text-slate-700 dark:text-white/80">{exp.remarks}</p>
         </div>
       )}
     </div>
@@ -165,8 +165,8 @@ function MetricSummary({ metric, results }: { metric: MetricRow; results: NonNul
 function InfoBlock({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs text-slate-900 dark:text-white/40">{label}</p>
-      <p className="text-sm text-slate-900 dark:text-white/80 mt-0.5">{value}</p>
+      <p className="text-xs text-slate-500 dark:text-white/40">{label}</p>
+      <p className="text-sm text-slate-700 dark:text-white/80 mt-0.5">{value}</p>
     </div>
   );
 }
@@ -184,7 +184,7 @@ export function ExperimentTable({ experiments, onEdit, onDelete }: Props) {
 
   if (experiments.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-slate-900 dark:text-white/30">
+      <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-white/30">
         <div className="text-5xl mb-4">🧪</div>
         <p className="text-lg font-medium">No experiments yet</p>
         <p className="text-sm mt-1">Click &quot;New Experiment&quot; to get started</p>
@@ -207,7 +207,7 @@ export function ExperimentTable({ experiments, onEdit, onDelete }: Props) {
               >
                 {/* ID & Expand */}
                 <div className="flex items-center gap-2 shrink-0 pt-0.5">
-                  <div className="text-slate-400 dark:text-white/30 group-hover:text-slate-600 dark:text-white/60 transition-colors">
+                  <div className="text-slate-400 dark:text-white/30 group-hover:text-slate-600 dark:group-hover:text-white/60 transition-colors">
                     {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                   </div>
                   <div className="text-xs font-mono font-medium text-slate-500 dark:text-white/50 bg-slate-100 dark:bg-white/5 px-2 py-1 rounded">

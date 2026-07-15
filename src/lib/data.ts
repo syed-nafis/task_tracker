@@ -68,6 +68,12 @@ export async function getTasks(): Promise<Task[]> {
   return docs.map(strip);
 }
 
+export async function getTask(id: number): Promise<Task | null> {
+  const db = await getDb();
+  const doc = await db.collection<Task>('tasks').findOne({ id });
+  return doc ? strip(doc) : null;
+}
+
 export async function insertTask(task: Task): Promise<void> {
   const db = await getDb();
   await db.collection<Task>('tasks').insertOne(clean(task));
@@ -117,7 +123,11 @@ const DEFAULT_PAGES = ['homepage', 'pdp', 'cart', 'checkout', 'category', 'searc
 export async function getPages(): Promise<string[]> {
   const db = await getDb();
   const docs = await db.collection<{ name: string }>('pages').find().sort({ name: 1 }).toArray();
-  if (docs.length === 0) return DEFAULT_PAGES;
+  if (docs.length === 0) {
+    // Seed defaults so later additions extend the list instead of replacing it.
+    await addPages(DEFAULT_PAGES);
+    return [...DEFAULT_PAGES].sort();
+  }
   return docs.map((d) => d.name);
 }
 
