@@ -1,0 +1,397 @@
+[
+  {
+    "id": 52,
+    "test_id": "TEST-052",
+    "title": "the front-list Featured Categories only has book c...",
+    "status": "SQA",
+    "platform": [
+      "Web-Mobile",
+      "Web-Desk"
+    ],
+    "pages": [
+      "home page"
+    ],
+    "hypothesis": "the front-list Featured Categories only has book categories with broken down by different stages of academic level. so title is vague, we can have a better title, that will express the intent of the section/front-list better.",
+    "problem_statement": "",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "",
+    "current_data": "",
+    "start_date": "2026-03-29T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 53,
+    "test_id": "TEST-053",
+    "title": "on add_to_cart button click, change to primary and...",
+    "status": "Live",
+    "platform": [
+      "Web-Mobile"
+    ],
+    "pages": [
+      "super-store page"
+    ],
+    "hypothesis": "on add_to_cart button click, change to primary and show text Go to cart will nudge users to goto cart and complete their purchase",
+    "problem_statement": "",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "",
+    "current_data": "",
+    "start_date": "2026-03-29T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 54,
+    "test_id": "TEST-054",
+    "title": "If we increase the font size and potentially the w...",
+    "status": "Amaly Task",
+    "platform": [
+      "Web-Mobile"
+    ],
+    "pages": [
+      "stationary-pdp"
+    ],
+    "hypothesis": "If we increase the font size and potentially the weight of the You are saving section on mobile PDPs, then we will see an increase in Add-to-Cart (ATC) rates.",
+    "problem_statement": "in mobile view you are saving section is hardly noticable",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "in mobile view you are saving section is hardly noticable",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 55,
+    "test_id": "TEST-055",
+    "title": "If we increase the font size of the percentage dis...",
+    "status": "Amaly Task",
+    "platform": [
+      "Web-Desk"
+    ],
+    "pages": [
+      "electronics-pdp"
+    ],
+    "hypothesis": "If we increase the font size of the percentage discount text (e.g., from 14px to 18px or 20px) to make it more prominent, then we will see an increase in Add-to-Cart (ATC) rates.",
+    "problem_statement": "we have alot of empty sapce in desktop pdp",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "we have alot of empty sapce in desktop pdp",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 56,
+    "test_id": "TEST-056",
+    "title": "If we change the text to shorter, action-oriented ...",
+    "status": "Amaly Task",
+    "platform": [
+      "Web-Desk"
+    ],
+    "pages": [
+      "home"
+    ],
+    "hypothesis": "If we change the text to shorter, action-oriented copy (e.g., Last 1 – Order now!) and change the font color to Red, then we will see a significant increase in Add-to-Cart (ATC) and Conversion Rates.",
+    "problem_statement": "the progress-bar copies can be alot stronger",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "the progress-bar copies can be alot stronger",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 57,
+    "test_id": "TEST-057",
+    "title": "If we display the exact numerical rating (e.g., 4....",
+    "status": "Amaly Task",
+    "platform": [
+      "Web-Mobile"
+    ],
+    "pages": [
+      "electronics-category-page"
+    ],
+    "hypothesis": "If we display the exact numerical rating (e.g., 4.2/5) alongside the star icons on product cards, then we will see an increase in Product Detail Page (PDP) click-through rates and overall conversion rates.",
+    "problem_statement": "product-cards do not show ratings number (i.e 4.5, 4.1)",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "product-cards do not show ratings number (i.e 4.5, 4.1)",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 58,
+    "test_id": "TEST-058",
+    "title": "If we increase the font size of the payable price ...",
+    "status": "Amaly Task",
+    "platform": [
+      "Web-Desk"
+    ],
+    "pages": [
+      "quick-deal page"
+    ],
+    "hypothesis": "If we increase the font size of the payable price (and potentially the % off) by 15-20% on product cards, then we will see an increase in Product List CTR and Add-to-Cart (ATC) rates.",
+    "problem_statement": "the price the crossed price, and percent off are all similar font size, ther eshould be a visual hierarchy",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "the price the crossed price, and percent off are all similar font size, ther eshould be a visual hierarchy",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 59,
+    "test_id": "TEST-059",
+    "title": "If we remove the crossed-out original price and on...",
+    "status": "Implementation",
+    "platform": [
+      "Web-Mobile"
+    ],
+    "pages": [
+      "quick-deal page"
+    ],
+    "hypothesis": "If we remove the crossed-out original price and only display the payable price and the percentage discount for mobile users, then we will see an increase in Add-to-Cart (ATC) and Conversion Rates.",
+    "problem_statement": "Deal section inetnt is the low price, the offer so users ivew the produc-page, when they view hte product page they will",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "Deal section inetnt is the low price, the offer so users ivew the produc-page, when they view hte product page they will",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 60,
+    "test_id": "TEST-060",
+    "title": "If we move the paying price to the left and the cr...",
+    "status": "Amaly Task",
+    "platform": [
+      "Web-Desk"
+    ],
+    "pages": [],
+    "hypothesis": "If we move the paying price to the left and the crossed-out original price to the right, then we will see an increase in CTR and Conversion Rate.",
+    "problem_statement": "most users read from left to right. hacing hte payable price to the right mkaes it so the user needs to process more information, and increases their cognitive load over time.",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "most users read from left to right. hacing hte payable price to the right mkaes it so the user needs to process more information, and increases their cognitive load over time.",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 61,
+    "test_id": "TEST-061",
+    "title": "If we display the Quick Deal badge (and potentiall...",
+    "status": "Implementation",
+    "platform": [
+      "Web-Desk"
+    ],
+    "pages": [
+      "sationnary-pdp"
+    ],
+    "hypothesis": "If we display the Quick Deal badge (and potentially the % off) on applicable items within the Related Products section, then we will see an increase in Related Product CTR and Cross-sell Conversion Rates.",
+    "problem_statement": "for the related product section in dekstop-ui-pdp if the product is in quick deal, it does not show quick deal.",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "for the related product section in dekstop-ui-pdp if the product is in quick deal, it does not show quick deal.",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 62,
+    "test_id": "TEST-062",
+    "title": "showing stock aount left in pdp as well, will cont...",
+    "status": "Analysis",
+    "platform": [
+      "Web-Mobile"
+    ],
+    "pages": [
+      "electronics-pdp"
+    ],
+    "hypothesis": "showing stock aount left in pdp as well, will continue the scarcity of quick deal from quick-deal / home page to the entire pdp page, will increase atc rate",
+    "problem_statement": "even though product card shows the stock left amount, pdp does not, this breaks the scarcity that we are trying to induce",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "even though product card shows the stock left amount, pdp does not, this breaks the scarcity that we are trying to induce",
+    "current_data": "",
+    "start_date": "2026-04-06T18:00:00.000Z",
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  },
+  {
+    "id": 63,
+    "test_id": "TEST-063",
+    "title": "shoing limited stock, or stock running our, badges...",
+    "status": "Analysis",
+    "platform": [
+      "Web-Mobile"
+    ],
+    "pages": [
+      "cart page"
+    ],
+    "hypothesis": "shoing limited stock, or stock running our, badges for quick deal items in cart, will increase checkout rate",
+    "problem_statement": "for quick deal items that are low in stock (10 or less) we do not show any urgency sticker or badge, in the cart page",
+    "metrics": {
+      "primary": "",
+      "secondary": [],
+      "guardrail": []
+    },
+    "result": "In Progress",
+    "revenue_impact": null,
+    "creator": "syed.nafis.sadique@gmail.com",
+    "baseline_data": "for quick deal items that are low in stock (10 or less) we do not show any urgency sticker or badge, in the cart page",
+    "current_data": "",
+    "start_date": null,
+    "end_date": null,
+    "duration_days": null,
+    "remarks": "",
+    "growthbook_id": "",
+    "amaly_task_id": "",
+    "source": "self",
+    "promoted_from_idea_id": null,
+    "created_at": "2026-04-21T20:00:21.795Z"
+  }
+]
